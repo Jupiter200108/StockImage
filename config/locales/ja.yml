@@ -1,0 +1,6 @@
+ja:
+  enums:
+    genre:
+      contents_status:
+        image: "画像"
+        video: "動画"
