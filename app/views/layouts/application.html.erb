@@ -15,11 +15,12 @@
       <% end %>
     	<% if admin_signed_in? %>
       	<%= link_to '商品一覧', admin_items_path,class: "btn btn-sm btn-outline" %>
-      	<%= link_to 'ユーザー一覧', admin_end_user_path,class: "btn btn-sm btn-outline" %>
+      	<%= link_to 'ユーザー一覧', admin_end_users_path,class: "btn btn-sm btn-outline" %>
       	<%= link_to 'ジャンル一覧', admin_genres_path,class: "btn btn-sm btn-outline-" %>
+      	<%= link_to 'カテゴリー一覧', admin_categories_path,class: "btn btn-sm btn-outline-" %>
       	<%= link_to 'ログアウト', destroy_admin_session_path, method: :delete,class: "btn btn-sm btn-outline" %>
     	<% elsif end_user_signed_in? %> <%= current_end_user.name %>
-      	<%= link_to 'プロフィール', mypage_path,class: "btn btn-sm btn-outline" %>
+      	<%= link_to 'プロフィール', end_user_path(current_end_user.id),class: "btn btn-sm btn-outline" %>
       	<%= link_to '商品一覧', items_path,class: "btn btn-sm btn-outline" %>
         <%= link_to cart_items_path do %>
       	  <i class="fa-solid fa-cart-shopping"></i>
@@ -33,20 +34,13 @@
       	<%= link_to 'サインアップ', new_end_user_registration_path,class: "btn btn-sm btn-outline" %>
       	<%= link_to 'ログイン', new_end_user_session_path,class: "btn btn-sm btn-outline" %>
     	<% end %>
-      <% if admin_signed_in? %>
-        <%= form_tag(admin_search_path, method: :get) do %>
-          <%= text_field_tag "search[content]", "", :placeholder =>"ä¼šå“¡: å§“,å,ã‚»ã‚¤,ãƒ¡ã‚¤ / å•†å“: å•†å“å" %>
-          <%= select_tag "search[model]", options_for_select({ "ä¼šå“¡" => "customer", "å•†å“" => "item" }) %>
-          <%= select_tag "search[method]", options_for_select({ "éƒ¨åˆ†ä¸€è‡´" => "partial", "å‰æ–¹ä¸€è‡´" => "forward", "å¾Œæ–¹ä¸€è‡´" => "backward", "å®Œå…¨ä¸€è‡´" => "perfect" }) %>
-          <%= submit_tag 'æ¤œç´¢', class: "btn btn-primary" %>
-        <% end %>
-      <% end %>
+
     </header>
     <main>
       <%= yield %>
     </main>
     <footer class="fixed-bottom">
-      Copyright Â© Infratop Inc. All Rights Reserved.
+
     </footer>
   </body>
 </html>

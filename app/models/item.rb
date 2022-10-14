@@ -1,5 +1,5 @@
 class Item < ApplicationRecord
-  has_one_attached :contents
+  has_one_attached :content
   belongs_to :category
   belongs_to :genre
   has_many :cart_items,dependent: :destroy

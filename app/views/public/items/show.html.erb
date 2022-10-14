@@ -2,7 +2,15 @@
   <div class ="row col-12 mt-5">
     <div class="col-6 offset-1 d-flex shadow-lg px-4 py-4">
       <table>
-        <tr><td><%= image_tag @item.contents,size: "400x400" %></td></tr>
+        <tr><td>
+          <% if @item.content.present?%>
+            <% if @item.content.content_type.include?('image/')%>
+              <%= image_tag @item.content,class:"card-img-top image-fluid" %>
+            <% else %>
+              <%= video_tag rails_blob_path(@item.content), class: "card-img-top image-fluid",controls: true %>
+            <% end%>
+          <% end %>
+        </td></tr>
           <table class ="table table-sm table-borderless ml-5">
             <tr><td></td></tr>
             <tr><td></td></tr>
@@ -19,8 +27,7 @@
                 <% unless current_end_user.present? %>
                 <% else %>
                   <%=f.hidden_field :end_user_id, :value =>current_end_user.id%>
-                <%=f.hidden_field :image, :value =>@item.image %>
-                <%= f.select :amount, *[1..9] %>
+                <%=f.hidden_field :content, :value =>@item.content %>
                 <%= f.submit "カートに追加" ,class: "btn btn-sm btn-outline-primary"%>
                 <% end %>
               <% end %>
@@ -40,7 +47,14 @@
   <div class="row col-12 justify-content-center shadow-lg px-4 py-5">
 
       <div class="col-6 d-flex justify-content-center">
-        <%= content_tag @item.contents,size: "400x400" %><br>
+        <% if @item.content.present?%>
+          <% if @item.content.content_type.include?('image/')%>
+            <%= image_tag @item.content,class:"card-img-top image-fluid" %>
+          <% else %>
+            <%= video_tag rails_blob_path(@item.content), class: "card-img-top image-fluid",controls: true %>
+          <% end%>
+        <% end %>
+        <br>
       </div>
 
       <div class="col-6 d-flex justify-content-center">

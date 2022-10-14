@@ -1,0 +1,62 @@
+<div class="container">
+  <div class="col-12 mb-4 mt-5">
+    <h3>マイページ</h3>
+  </div>
+  <div class="row">
+    <div class="col-12">
+      <table class="table table-borderless mb-0">
+        <tr>
+          <td class="col-2">
+            <h4 class="font-weight-bold">登録情報</h4>
+          </td>
+          <td class="col-2">
+            <%= link_to "編集する", edit_end_user_path,class: 'btn btn-outline-success' %>
+          </td>
+          <td class="col-4">
+          </td>
+          <td class="col-4">
+          </td>
+        </tr>
+      </table>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-8">
+      <table class="table table-bordered mt-0">
+        <tbody>
+          <tr>
+            <td class="table-dark" style="width: 20%">氏名</td>
+            <td>
+              <%= @end_user.name %>
+            </td>
+          </tr>
+
+          <tr>
+            <td class="table-dark">メールアドレス</td>
+            <td>
+              <%= @end_user.email %>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-12">
+      <table class="table table-borderless">
+        <tr>
+          <td class="col-2">
+            <h4 class="font-weight-bold">注文履歴</h4>
+          </td>
+          <td>
+            <%= link_to "一覧を見る",orders_path,class: 'btn btn-outline-primary' %>
+          </td>
+          <td class="col-4">
+          </td>
+          <td class="col-4">
+          </td>
+        </tr>
+      </table>
+    </div>
+  </div>
+</div>

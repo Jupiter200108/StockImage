@@ -1,6 +1,6 @@
 class Public::CartItemsController < ApplicationController
   def index
-    @cart_items = current_customer.cart_items.all
+    @cart_items = current_end_user.cart_items.all
     @total_payment = 0
   end
 
@@ -17,14 +17,14 @@ class Public::CartItemsController < ApplicationController
   end
 
   def destroy_all
-    cart_items= current_customer.cart_items.all
+    cart_items= current_end_user.cart_items.all
     cart_items.destroy_all
     redirect_to cart_items_path
   end
 
   def create
-    @cart_item = current_customer.cart_items.build(cart_item_params)
-    @cart_items=current_customer.cart_items.all
+    @cart_item = current_end_user.cart_items.build(cart_item_params)
+    @cart_items=current_end_user.cart_items.all
     @cart_items.each do |cart_item|
       if cart_item.item.id==@cart_item.item.id
         new_amount = cart_item.amount + @cart_item.amount
@@ -39,6 +39,6 @@ class Public::CartItemsController < ApplicationController
   private
 
   def cart_item_params
-    params.require(:cart_item).permit(:images,:item_id, :amount, :customer_id )
+    params.require(:cart_item).permit(:images,:item_id, :amount, :end_user_id )
   end
 end
