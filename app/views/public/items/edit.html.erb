@@ -1,40 +1,49 @@
-<div class="container col-6 shadow mt-5">
-  <div class="row col-8 mx-auto d-flex justify-content-center">
-    <div class="mt-5 mb-4 ml-5　mx-auto">
-      <h3>画像・動画編集</h3>
+<div class="container mt-5">
+  <div class="row mb-5">
+    <h3>動画・画像編集</h3>
+  </div>
+  
+  <div class="row col-md-12 justify-content-center shadow-lg px-4 py-5">
+    <div class="col-md-6 d-flex justify-content-center">
+      <% if @item.content.present?%>
+        <% if @item.content.content_type.include?('image/')%>
+          <%= image_tag @item.content,class:"card-img-top image-fluid" %>
+        <% else %>
+          <%= video_tag rails_blob_path(@item.content), class: "card-img-top image-fluid",controls: true %>
+        <% end%>
+      <% end %>
+      <br>
+    </div>
+
+    <div class="col-md-6">
+      <%= form_with model: @item,url: items_path,method: :patch do |f| %>
+        <div class="row col-12">
+          <div class="col-3 align-top"><%= f.label :content,"画像・動画" %></div>
+          <div class="col-8 align-top"><%= f.file_field :content, accept: "image/*" %></div>
+        </div>
+        
+        <div class="row col-12">
+          <div class="col-3 align-top"><%= f.label :name,"タイトル" %></div>
+          <div class="col-8 align-top"><%= f.text_field :name, class: "col-12 px-0" %></div>
+        </div>
+  
+        <div class="row col-12">
+          <div class="col-3 align-top"><%= f.label :introduction,"説明" %></div>
+          <div class="col-8 align-top"><%= f.text_area :introduction, class: "col-12 px-0",rows: "7" %></div>
+        </div>
+  
+        <div class="row col-12">
+          <div class="col-3 align-top"><%= f.label :genre_id,"ジャンル" %></div>
+          <div class="col-8 align-top"><%= f.select :genre_id, options_from_collection_for_select(Genre.all, :id, :name), {prompt: "選択してください"}, class: "form-control-sm col-10 pl-1" %></div>
+        </div>
+  
+        <div class="row col-12">
+          <div class="col-3 align-top"><%= f.label :category_id,"カテゴリー" %></div>
+          <div class="col-8 align-top"><%= f.select :category_id, options_from_collection_for_select(Category.all, :id, :name), {prompt: "選択してください"}, class: "form-control-sm col-10 pl-1" %></div>
+        </div>
+        
+        <div class="col-12 text-center "><%= f.submit "変更を保存", class: "btn btn-sm btn-outline-success" %></div>
+      <% end %>
     </div>
   </div>
-  <%= form_with model: @item,url: items_path,method: :post do |f| %>
-    <div class="row col-12 d-flex mx-auto justify-content-center">
-      <table class ="table-sm">
-        <tr>
-          <td class="col-4"><%= f.label :name,"画像・動画" %></td>
-          <td class="col-4"><%=　@item.content %></td>
-        </tr>
-        <tr>
-          <td class="col-4"><%= f.label :name,"タイトル" %></td>
-          <td class="col-4"><%= f.text_field :name, class: "col-10 px-0" %></td>
-        </tr>
-        <tr>
-          <td class="col-4 align-top"><%= f.label :introduction,"説明" %></td>
-          <td class="col-4"><%= f.text_area :introduction, class: "col-10 px-0",rows: "7" %></td>
-        </tr>
-        <tr>
-          <td class="col-4"><%= f.label :genre_id,"ジャンル" %></td>
-          <td class="col-4"><%= f.select :genre_id, options_from_collection_for_select(Genre.all, :id, :name), {prompt: "選択してください"}, class: "form-control-sm col-10 pl-1" %></td>
-        </tr>
-        <tr>
-          <td class="col-4"><%= f.label :category_id,"カテゴリー" %></td>
-          <td class="col-4"><%= f.select :category_id, options_from_collection_for_select(Category.all, :id, :name), {prompt: "選択してください"}, class: "form-control-sm col-10 pl-1" %></td>
-        </tr>
-
-      </table>
-    </div>
-    <div class="row col-12 mx-auto d-flex justify-content-center">
-      <div class="mt-5 mb-4 ml-5　mx-auto">
-        <%= f.submit "変更を保存", class: "btn btn-sm btn-outline-success" %>
-      </div>
-    </div>
-  <% end %>
 </div>
-

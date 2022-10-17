@@ -27,8 +27,6 @@ class Public::CartItemsController < ApplicationController
     @cart_items=current_end_user.cart_items.all
     @cart_items.each do |cart_item|
       if cart_item.item.id==@cart_item.item.id
-        new_amount = cart_item.amount + @cart_item.amount
-        cart_item.update_attribute(:amount, new_amount)
         @cart_item.delete
       end
     end
@@ -39,6 +37,6 @@ class Public::CartItemsController < ApplicationController
   private
 
   def cart_item_params
-    params.require(:cart_item).permit(:images,:item_id, :amount, :end_user_id )
+    params.require(:cart_item).permit(:content,:item_id, :amount, :end_user_id )
   end
 end

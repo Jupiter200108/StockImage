@@ -1,9 +1,12 @@
 <%- if controller_name != 'sessions' %>
-  <%= link_to "Log in", new_session_path(resource_name) %><br />
+  アカウントをお持ちですか？<%= link_to "ログイン", new_session_path(resource_name) %>
 <% end %>
 
 <%- if devise_mapping.registerable? && controller_name != 'registrations' %>
-  <%= link_to "Sign up", new_registration_path(resource_name) %><br />
+　アカウントがまだありませんか？<br/>
+　<div class="col-md-12 text-center">
+  <%= link_to "アカウントを作成", new_registration_path(resource_name),class: 'btn btn-block mybtn  btn-outline-light tx-tfm rounded-pill border border-3 text-dark' %>
+  </div>
 <% end %>
 
 

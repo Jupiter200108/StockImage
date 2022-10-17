@@ -10,11 +10,6 @@ class Item < ApplicationRecord
   #validates :genre_id, presence: true
   #validates :price, presence: true
   #validates :is_active, inclusion: [true, false]
-
-  def add_tax_price
-    (self.price * 1.1).round
-  end
-
   
   def self.search(word)
     @item = Item.where("name LIKE?","%#{word}%")

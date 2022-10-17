@@ -9,30 +9,43 @@
     <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
   </head>
   <body>
-    <header class="shadow">
+    <header class="col-md-12 d-flex border border-3">
+      <div>
       <%= link_to root_path do %>
         <%= image_tag 'logo.png',size: "150x45" %>
       <% end %>
+      </div>
     	<% if admin_signed_in? %>
+    	  <div class="col-md-9">
       	<%= link_to '商品一覧', admin_items_path,class: "btn btn-sm btn-outline" %>
       	<%= link_to 'ユーザー一覧', admin_end_users_path,class: "btn btn-sm btn-outline" %>
       	<%= link_to 'ジャンル一覧', admin_genres_path,class: "btn btn-sm btn-outline-" %>
       	<%= link_to 'カテゴリー一覧', admin_categories_path,class: "btn btn-sm btn-outline-" %>
       	<%= link_to 'ログアウト', destroy_admin_session_path, method: :delete,class: "btn btn-sm btn-outline" %>
-    	<% elsif end_user_signed_in? %> <%= current_end_user.name %>
-      	<%= link_to 'プロフィール', end_user_path(current_end_user.id),class: "btn btn-sm btn-outline" %>
+        </div>
+    	<% elsif end_user_signed_in? %> 
+    	  <div class="col-md-4 my-auto">
       	<%= link_to '商品一覧', items_path,class: "btn btn-sm btn-outline" %>
+    	  </div>
+      	<div class="col-md-4 ml-auto  my-auto text-right">
         <%= link_to cart_items_path do %>
-      	  <i class="fa-solid fa-cart-shopping"></i>
+      	  <i class="fa-solid fa-cart-shopping" style="color: black;"></i>
       	<% end %>
       	<%= link_to 'ログアウト', destroy_end_user_session_path, method: :delete,class: "btn btn-sm btn-outline" %>
+      	<%= link_to 'プロフィール', end_user_path(current_end_user.id),class: "btn btn-sm btn-outline" %>
+      	 <%= current_end_user.name %>
+      	</div>
     	<% else %>
+    	  <div class="col-md-4  my-auto">
       	<%= link_to '商品一覧', items_path,class: "btn btn-sm btn-outline" %>
+    	  </div>
+      	<div class="col-md-4 ml-auto my-auto text-right">
       	<%= link_to cart_items_path do %>
       	  <i class="fa-solid fa-cart-shopping" style="color: black;"></i>
       	<% end %>
       	<%= link_to 'サインアップ', new_end_user_registration_path,class: "btn btn-sm btn-outline" %>
       	<%= link_to 'ログイン', new_end_user_session_path,class: "btn btn-sm btn-outline" %>
+      	</div>
     	<% end %>
 
     </header>

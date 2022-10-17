@@ -1,9 +1,10 @@
 <div class="container">
-  <div class = "row">
-    <div class = "col-lg-5">
+  <div class = "row col-md-12">
+    <div class = "col-md-5">
       <h3 class ="my-5">ジャンル一覧・追加</h3>
 
       <%= form_with model: @genre,url: admin_genres_path,method: :post do |f| %>
+        
         <%= f.label :name,"ジャンル名" %>
         <%= f.text_field :name %>
         <%= f.radio_button :contents_status, Genre.contents_statuses.key(0) %>
@@ -13,9 +14,8 @@
         <%= f.submit "新規登録", class: "btn btn-sm btn-outline-success" %>
       <% end %>
     </div>
-  </div>
-　<div class = "row">
-    <div class = "col-lg-5">
+    
+    <div class = "col-md-7">
         <table class= "table mt-5">
           <thead>
             <th class ="table-dark">ジャンル</th>
