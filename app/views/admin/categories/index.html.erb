@@ -1,28 +1,43 @@
 <div class="container">
-  <div class = "row">
-    <div class = "col-lg-5">
-      <h3 class ="my-5">カテゴリー一覧・追加</h3>
-
+  <div class = "row col-md-12 my-5 mx-0 justify-content-center">
+    <div class = "col-md-5">
+      <div class="col-md-12 py-4 px-2 border">
+        <div class="text-center py-4">
+          <h3>カテゴリー一覧・追加</h3>
+        </div>
         <%= form_with model: @category,url: admin_categories_path,method: :post do |f| %>
-          <%= f.label :name,"カテゴリー名" %>
-          <%= f.text_field :name %>
-          <%= f.submit "新規登録", class: "btn btn-sm btn-outline-success" %>
-        <% end %>
+          <div class="row col-md-12 mx-0">
+            <div class="col-5"><%= f.label :name,"カテゴリー名" %></div>
+            <div class="col-7 px-0"><%= f.text_field :name, class: "col-12 px-1" %></div>
+          </div>
 
-        <table class= "table mt-5">
-          <thead>
-            <th class ="table-dark">カテゴリー</th>
-            <th class ="table-dark"></th>
-          </thead>
-          <tbody>
-            <% @categories.each do |category| %>
-            <tr>
-              <td><%= category.name %></td>
-              <td><%= link_to "編集する",edit_admin_category_path(category.id), class: "btn btn-sm btn-outline-success" %></td>
-            </tr>
-            <% end %>
-          </tbody>
-        </table>
+          <div class="row col-12 justify-content-center mx-0">
+            <%= f.submit "新規登録", class: "btn btn-sm btn-outline-danger mt-4" %>
+          </div>
+        <% end %>
+      </div>
     </div>
+  </div>
+
+  <div class = "row col-md-12 my-5 mx-0  justify-content-center">
+    <div class = "col-md-5">
+      <div class = "col-md-12 border border-dark px-0">
+        <div class="col-md-12 bg-secondary text-white text-center py-2">
+          カテゴリー
+        </div>
+
+        <% @categories.each do |category| %>
+        <div class="row col-12 mx-0 py-2 border-bottom">
+          <div class="col-md-7">
+            <%= category.name %>
+          </div>
+          <div class="col-md-5">
+            <%= link_to "編集する",edit_admin_category_path(category.id), class: "btn btn-sm btn-outline-success" %>
+          </div>
+        </div>
+        <% end %>
+      </div>
+    </div>
+    
   </div>
 </div>

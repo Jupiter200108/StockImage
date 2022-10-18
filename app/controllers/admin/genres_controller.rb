@@ -1,7 +1,8 @@
 class Admin::GenresController < ApplicationController
   def index
     @genre   = Genre.new
-    @genres  = Genre.all
+    @genres_image  = Genre.where(contents_status: 0)
+    @genres_video  = Genre.where(contents_status: 1)
   end
 
   def edit
