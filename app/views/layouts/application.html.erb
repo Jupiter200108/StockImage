@@ -23,7 +23,7 @@
       	<%= link_to 'カテゴリー一覧', admin_categories_path,class: "btn btn-sm btn-outline-" %>
       	<%= link_to 'ログアウト', destroy_admin_session_path, method: :delete,class: "btn btn-sm btn-outline" %>
         </div>
-    	<% elsif end_user_signed_in? %>
+    	<% elsif end_user_signed_in? %> 
     	  <div class="col-md-4 my-auto">
       	<%= link_to '商品一覧', items_path,class: "btn btn-sm btn-outline" %>
     	  </div>
