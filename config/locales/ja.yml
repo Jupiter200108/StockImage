@@ -4,6 +4,10 @@ ja:
       contents_status:
         image: "画像"
         video: "動画"
+    order:
+      payment_method:
+        credit_card: "クレジットカード"
+        transfer: "銀行振込"
   activerecord:
     errors:
       messages:

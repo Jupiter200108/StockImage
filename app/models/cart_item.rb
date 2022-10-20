@@ -1,7 +1,7 @@
 class CartItem < ApplicationRecord
-  belongs_to :item_id
-  belongs_to :end_user_id
-  
-  has_many_attached :content
-  
+  belongs_to :item
+  belongs_to :end_user
+
+  has_many_attached :contents
+
 end

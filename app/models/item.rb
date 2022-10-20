@@ -11,6 +11,14 @@ class Item < ApplicationRecord
   #validates :price, presence: true
   #validates :is_active, inclusion: [true, false]
   
+  def is_active_check
+    if is_active == true
+      "公開"
+    else
+      "非公開"
+    end
+  end
+  
   def self.search(word)
     @item = Item.where("name LIKE?","%#{word}%")
   end

@@ -45,14 +45,12 @@
 
     <div class="col-md-12 text-center mt-5"><%= link_to "編集する", edit_item_path(@item.id), class: "btn btn-sm btn-outline-success" %></div>
     <div class="col-md-12 text-center mt-5">
-      <%= form_with model: @cart_item,method: :post,multipart: true do |f| %>
-        <%=f.hidden_field :name, :value => @item.name %>
+      <%= form_with model: @cart_item, url: cart_items_path,  method: :post,multipart: true do |f| %>
         <%=f.hidden_field :item_id, :value => @item.id %>
         <!--ログインしていない場合-->
         <% unless current_end_user.present? %>
         <% else %>
           <%=f.hidden_field :end_user_id, :value =>current_end_user.id %>
-        <%=f.hidden_field :content, :value =>@item.content %>
         <%= f.submit "カートに追加" ,class: "btn btn-sm btn-outline-primary"%>
         <% end %>
       <% end %>

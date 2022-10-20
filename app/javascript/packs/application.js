@@ -10,8 +10,14 @@ import "channels"
 import "jquery";
 import "popper.js";
 import "bootstrap";
-import "../stylesheets/application"
+import "../stylesheets/skippr"
+// import "../stylesheets/drawer"
 import '@fortawesome/fontawesome-free/js/all'
+import "skippr.min"
+import "script.js"
+// import "drawer.min"
+import "iscroll.min"
+import "../stylesheets/application"
 
 Rails.start()
 Turbolinks.start()

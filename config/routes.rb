@@ -19,9 +19,9 @@ Rails.application.routes.draw do
     resources :cart_items,only:[:create, :index, :update, :destroy]
     get '/cart_items/destroy_all' => "cart_items#destroy_all"
 
-    resources :orders,only:[:new, :index, :show, :edit, :create, :update]
     get "/orders/thanks" =>"orders#thanks"
     post "/orders/confirm" =>"orders#confirm"
+    resources :orders,only:[:new, :index, :show, :edit, :create, :update]
 
     resources :end_users,only:[:show, :edit, :create, :update]
     get '/end_users/unsubscribe' => "end_users#unsubscribe", as: "unsubscribe"

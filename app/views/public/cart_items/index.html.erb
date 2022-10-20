@@ -1,4 +1,4 @@
-<% if current_customer.cart_items.count==0 %>
+<% if current_end_user.cart_items.count==0 %>
   <div class="container">
     <div class="row">
       <div class="col-md-6 col-sm-12 mx-2 mx-sm-auto rounded py-5 my-5">
@@ -26,22 +26,17 @@
         <thead class="table-dark">
           <th class="col-3">商品名</th>
           <th class="col-1">単価(税込み)</th>
-          <th class="col-1">数量</th>
           <th class="col-1">小計</th>
           <th class="col-1"></th>
         </thead>
         <% @cart_items.each do |cart_item| %>
         <tbody>
-          <td><%=image_tag cart_item.item.image,size:"50x50" %><span class= "px-1"><%=cart_item.item.name %></span></td>
-          <td class= "align-middle"><%=cart_item.item.add_tax_price.to_s(:delimited) %></td>
-          <td class= "align-middle"><%=form_with model: cart_item,url: cart_item_path(cart_item),method: :patch do |f| %>
-                <%=f.number_field :amount,min:1, max: 9,id:"amount" %>
-                <%=f.submit "編集",class: "btn btn-sm btn-outline-success" %>
-                <% end %>
+          <td>
+          <span class= "px-1"><%=cart_item.item.name %></span>
           </td>
-          <td class= "align-middle"><%=cart_item.subtotal.to_s(:delimited) %></td>
+          <td class= "align-middle"></td>
           <td class= "align-middle"><%=link_to "削除する",cart_item_path(cart_item), method: :delete,class: "btn btn-sm btn-outline-danger"%></td>
-            <% @total_payment+= cart_item.subtotal %>
+            
           </tbody>
         <% end %>
       </table>

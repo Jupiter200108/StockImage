@@ -23,13 +23,9 @@ class Public::CartItemsController < ApplicationController
   end
 
   def create
-    @cart_item = current_end_user.cart_items.build(cart_item_params)
+    @cart_item = current_end_user.cart_items.new(cart_item_params)
     @cart_items=current_end_user.cart_items.all
-    @cart_items.each do |cart_item|
-      if cart_item.item.id==@cart_item.item.id
-        @cart_item.delete
-      end
-    end
+    
     @cart_item.save
     redirect_to :cart_items
   end
@@ -37,6 +33,6 @@ class Public::CartItemsController < ApplicationController
   private
 
   def cart_item_params
-    params.require(:cart_item).permit(:content,:item_id, :amount, :end_user_id )
+    params.require(:cart_item).permit(:item_id, :end_user_id )
   end
 end
