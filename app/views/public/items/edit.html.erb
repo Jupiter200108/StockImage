@@ -15,34 +15,36 @@
       <br>
     </div>
 
-    <div class="col-md-6">
+    <div class="col-md-6 my-3">
       <%= form_with model: @item,url: item_path,method: :patch do |f| %>
-        <div class="row col-12">
-          <div class="col-3 align-top"><%= f.label :content,"画像・動画" %></div>
+        <div class="row col-12 py-1">
+          <div class="col-4 align-top"><%= f.label :content,"画像・動画" %></div>
           <div class="col-8 align-top"><%= f.file_field :content, accept: "image/*" %></div>
         </div>
 
-        <div class="row col-12">
-          <div class="col-3 align-top"><%= f.label :name,"タイトル" %></div>
-          <div class="col-8 align-top"><%= f.text_field :name, class: "col-12 px-0" %></div>
+        <div class="row col-12 py-1">
+          <div class="col-4 align-top"><%= f.label :name,"タイトル" %></div>
+          <div class="col-8 align-top"><%= f.text_field :name, class: "col-12 px-1" %></div>
         </div>
 
-        <div class="row col-12">
-          <div class="col-3 align-top"><%= f.label :introduction,"説明" %></div>
-          <div class="col-8 align-top"><%= f.text_area :introduction, class: "col-12 px-0",rows: "7" %></div>
+        <div class="row col-12 py-1">
+          <div class="col-4 align-top"><%= f.label :introduction,"説明" %></div>
+          <div class="col-8 align-top"><%= f.text_area :introduction, class: "col-12 px-1",rows: "7" %></div>
         </div>
 
-        <div class="row col-12">
-          <div class="col-3 align-top"><%= f.label :genre_id,"ジャンル" %></div>
+        <div class="row col-12 py-1">
+          <div class="col-4 align-top"><%= f.label :genre_id,"ジャンル" %></div>
           <div class="col-8 align-top"><%= f.select :genre_id, options_from_collection_for_select(Genre.all, :id, :name), {prompt: "選択してください"}, class: "form-control-sm col-10 pl-1" %></div>
         </div>
 
-        <div class="row col-12">
-          <div class="col-3 align-top"><%= f.label :category_id,"カテゴリー" %></div>
+        <div class="row col-12 py-1">
+          <div class="col-4 align-top"><%= f.label :category_id,"カテゴリー" %></div>
           <div class="col-8 align-top"><%= f.select :category_id, options_from_collection_for_select(Category.all, :id, :name), {prompt: "選択してください"}, class: "form-control-sm col-10 pl-1" %></div>
         </div>
 
-        <div class="col-12 text-center "><%= f.submit "変更を保存", class: "btn btn-sm btn-outline-success" %></div>
+        <div class="row col-12 mx-auto d-flex justify-content-center">
+          <div class="mt-4 ml-5 mx-auto"><%= f.submit "変更を保存", class: "btn btn-sm btn-outline-success rounded-pill border border-3" %></div>
+        </div>
       <% end %>
     </div>
   </div>
