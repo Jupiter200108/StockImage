@@ -1,0 +1,15 @@
+<% if item.favorited_by?(current_end_user) %>
+  <%= link_to item_favorites_path(item), method: :delete, remote: true, class: "text-decoration-none" do %>
+  <div class="d-flex justify-content-end">
+    <i class="fas fa-heart h4 my-auto" aria-hidden="true" style="color: red;"></i>
+    <h4 class="my-auto" style="color: red;"><%= item.favorites.count %></h4>
+  </div>
+  <% end %>
+<% else %>
+  <%= link_to item_favorites_path(item), method: :post, remote: true, class: "text-decoration-none" do %>
+  <div class="d-flex justify-content-end">
+    <i class="fas fa-heart h4 my-auto" aria-hidden="true"></i>
+    <h4 class="my-auto"><%= item.favorites.count %></h4>
+  </div>
+  <% end %>
+<% end %>

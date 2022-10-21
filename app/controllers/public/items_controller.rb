@@ -5,6 +5,7 @@ class Public::ItemsController < ApplicationController
 
   def create
     @item = Item.new(item_params)
+    @item.end_user_id = current_end_user.id
     if @item.save
       redirect_to item_path(@item.id)
     else
@@ -19,7 +20,7 @@ class Public::ItemsController < ApplicationController
   end
 
   def index
-    @items = Item.page(params[:page]).per(10)
+    @items = Item.page(params[:page]).per(100)
   end
 
   def edit
@@ -39,6 +40,6 @@ class Public::ItemsController < ApplicationController
   private
 
   def item_params
-    params.require(:item).permit(:category_id, :genre_id, :name, :introduction, :contents_status, :content)
+    params.require(:item).permit(:end_user_id, :category_id, :genre_id, :name, :introduction, :contents_status, :content)
   end
 end

@@ -24,57 +24,65 @@
       </div>
     	<% if admin_signed_in? %>
     	  <div class="col-md-9">
-        	<%= link_to '商品一覧', admin_items_path,class: "btn btn-sm" %>
-        	<%= link_to 'ユーザー一覧', admin_end_users_path,class: "btn btn-sm" %>
-        	<%= link_to 'ジャンル一覧', admin_genres_path,class: "btn btn-sm" %>
-        	<%= link_to 'カテゴリー一覧', admin_categories_path,class: "btn btn-sm" %>
-        	<%= link_to 'ログアウト', destroy_admin_session_path, method: :delete,class: "btn btn-sm" %>
+        	<%= link_to '商品一覧', admin_items_path,class: "btn btn-sm border border-3" %>
+        	<%= link_to 'ユーザー一覧', admin_end_users_path,class: "btn btn-sm border border-3" %>
+        	<%= link_to 'ジャンル一覧', admin_genres_path,class: "btn btn-sm border border-3" %>
+        	<%= link_to 'カテゴリー一覧', admin_categories_path,class: "btn btn-sm border border-3" %>
+        	<%= link_to 'ログアウト', destroy_admin_session_path, method: :delete,class: "btn btn-sm border border-3" %>
         </div>
 
     	<% elsif end_user_signed_in? %>
     	  <div class="col-md-4 my-auto">
-        	<%= link_to '商品一覧', items_path,class: "btn btn-sm" %>
+        	<%= link_to '商品一覧', items_path,class: "btn btn-sm border border-3" %>
     	  </div>
-      	<div class="col-md-2 ml-auto my-auto text-right d-flex">
-          <%= link_to cart_items_path do %>
-        	  <i class="fa-solid fa-cart-shopping h5 my-auto" style="color: black;"></i>
-        	<% end %>
+      	<div class="col-md-2 ml-auto my-auto text-right d-flex justify-content-around">
+      	  <div>
+            <%= link_to cart_items_path do %>
+          	  <i class="fa-solid fa-cart-shopping h5 my-auto" style="color: black;"></i>
+          	<% end %>
+        	</div>
+      	  <div>
+        	  <i class="fas fa-heart h4 my-auto" aria-hidden="true"></i>
+          </div>
 
-        	<button class="drawer-toggle drawer-hamburger mt-2" style="z-index: 100;">
-            <span><i class="fa-regular fa-user rounded-circle bg-secondary text-white p-3 my-auto"></i></span>
-          </button>
-          <div class="drawer-nav" style="z-index: 90;">
-            <div class="drawer-content drawer-content-scrollable">
-              <div class="drawer-header py-5 text-center bg-light shadow">
-                <h6 class="drawer-title">こんにちは、<%= current_end_user.name %>さん！</h6>
-              </div>
-              <div class="drawer-body px-4">
-                <div class="py-3 text-left">
-                  <%= link_to end_user_path(current_end_user.id),class: "btn btn-sm h2" do %>
-                　   <div class = "d-flex justify-content-center"><i class="fa-solid fa-gear h5 my-auto pr-2"></i>アカウント詳細</div>
-                　<% end %>
+      	  <div>
+          	<button class="drawer-toggle drawer-hamburger mt-2" style="z-index: 100;">
+              <span><i class="fa-regular fa-user rounded-circle bg-secondary text-white p-3 my-auto"></i></span>
+            </button>
+            <div class="drawer-nav" style="z-index: 90;">
+              <div class="drawer-content drawer-content-scrollable">
+                <div class="drawer-header py-5 text-center bg-light shadow">
+                  <h6 class="drawer-title">こんにちは、<%= current_end_user.name %>さん！</h6>
                 </div>
-                <div class="py-3 text-left">
-                  <%= link_to destroy_end_user_session_path, method: :delete,class: "btn btn-sm h2" do %>
-                    <div class = "d-flex justify-content-center"><i class="fa-solid fa-arrow-right h5 my-auto pr-2"></i>ログアウト</div>
-                　<% end %>
+                <div class="drawer-body px-4">
+                  <div class="py-3 text-left">
+                    <%= link_to end_user_path(current_end_user.id),class: "btn btn-sm h2" do %>
+                  　   <div class = "d-flex justify-content-center"><i class="fa-solid fa-gear h5 my-auto pr-2"></i>アカウント詳細</div>
+                  　<% end %>
+                  </div>
+                  <div class="py-3 text-left">
+                    <%= link_to destroy_end_user_session_path, method: :delete,class: "btn btn-sm h2" do %>
+                      <div class = "d-flex justify-content-center"><i class="fa-solid fa-arrow-right h5 my-auto pr-2"></i>ログアウト</div>
+                  　<% end %>
+                  </div>
                 </div>
+                <div class="drawer-footer"></div>
               </div>
-              <div class="drawer-footer"></div>
             </div>
           </div>
       	</div>
 
     	<% else %>
-    	  <div class="col-md-4  my-auto">
-        	<%= link_to '商品一覧', items_path,class: "btn btn-sm" %>
+    	  <div class="col-md-4 my-auto">
+        	<%= link_to '商品一覧', items_path,class: "btn btn-sm border border-3" %>
     	  </div>
       	<div class="col-md-4 ml-auto my-auto text-right">
-        	<%= link_to cart_items_path do %>
+        	<%= link_to cart_items_path,class: "btn btn-sm btn btn-light rounded-pill" do %>
         	  <i class="fa-solid fa-cart-shopping" style="color: black;"></i>
         	<% end %>
-        	<%= link_to 'ログイン', new_end_user_session_path,class: "btn btn-sm" %>
-        	<%= link_to 'サインアップ', new_end_user_registration_path,class: "btn btn-sm" %>
+        	<i class="fas fa-heart h4 my-auto" aria-hidden="true"></i>
+        	<%= link_to 'ログイン', new_end_user_session_path,class: "btn btn-sm btn btn-light rounded-pill border border-3" %>
+        	<%= link_to 'サインアップ', new_end_user_registration_path,class: "btn btn-sm btn-outline-danger rounded-pill border border-3 text-b" %>
       	</div>
     	<% end %>
 

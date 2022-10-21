@@ -15,7 +15,9 @@ Rails.application.routes.draw do
 
   scope module: :public do
     root to: 'homes#top'
-    resources :items,only:[:new, :index, :show, :edit, :create, :update]
+    resources :items,only:[:new, :index, :show, :edit, :create, :update] do
+      resource :favorites, only: [:create, :destroy]
+    end
     resources :cart_items,only:[:create, :index, :update, :destroy]
     get '/cart_items/destroy_all' => "cart_items#destroy_all"
 

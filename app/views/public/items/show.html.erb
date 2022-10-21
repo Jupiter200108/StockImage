@@ -3,7 +3,7 @@
   <h3>商品詳細</h3>
 </div>
 
-  <div class="row col-md-12 justify-content-center shadow-lg px-4 py-5">
+  <div class="row col-md-11 justify-content-center shadow-lg px-4 py-5">
 
     <div class="col-md-6 d-flex justify-content-center">
       <% if @item.content.present?%>
@@ -17,33 +17,37 @@
     </div>
 
     <div class="col-md-6">
-      <div class="row col-12">
-        <div class="col-3 align-top">商品名</div>
+      <div class="<%= "favorite-" + @item.id.to_s %>" >
+        <%= render "public/favorites/btn", item: @item %>
+      </div>
+      <div class="row col-12 mb-2">
+        <div class="col-4 align-top">タイトル</div>
         <div class="col-8 align-top"><%= @item.name %></div>
       </div>
 
-      <div class="row col-12">
-        <div class="col-3 align-top">商品説明</div>
-        <div class="col-8 align-top text-wrap"><%= @item.introduction %></div>
+      <div class="row col-12 mb-2">
+        <div class="col-4 align-top">説明</div>
+        <div class="col-8 align-top text-wrap text-break"><%= @item.introduction %></div>
       </div>
 
-      <div class="row col-12">
-        <div class="col-3 align-top">ジャンル</div>
+      <div class="row col-12 mb-2">
+        <div class="col-4 align-top">ジャンル</div>
         <div class="col-8 align-top"><%= @item.genre.name %></div>
       </div>
 
-      <div class="row col-12">
-        <div class="col-3 align-top">カテゴリー</div>
+      <div class="row col-12 mb-2">
+        <div class="col-4 align-top">カテゴリー</div>
         <div class="col-8 align-top"><%= @item.category.name %></div>
       </div>
 
-      <div class="row col-12">
-        <div class="col-3 align-top">価格</div>
+      <div class="row col-12 mb-2">
+        <div class="col-4 align-top">価格</div>
         <div class="col-8 align-top">1000円</div>
       </div>
     </div>
-
-    <div class="col-md-12 text-center mt-5"><%= link_to "編集する", edit_item_path(@item.id), class: "btn btn-sm btn-outline-success" %></div>
+    <% if @item.end_user_id == current_end_user.id %>
+    <div class="col-md-12 text-center mt-5"><%= link_to "編集する", edit_item_path(@item.id), class: "btn btn-sm btn-outline-success rounded-pill border border-3" %></div>
+    <% else %>
     <div class="col-md-12 text-center mt-5">
       <%= form_with model: @cart_item, url: cart_items_path,  method: :post,multipart: true do |f| %>
         <%=f.hidden_field :item_id, :value => @item.id %>
@@ -51,10 +55,11 @@
         <% unless current_end_user.present? %>
         <% else %>
           <%=f.hidden_field :end_user_id, :value =>current_end_user.id %>
-        <%= f.submit "カートに追加" ,class: "btn btn-sm btn-outline-primary"%>
+        <%= f.submit "カートに追加" ,class: "btn btn-sm btn-outline-primary rounded-pill border border-3"%>
         <% end %>
       <% end %>
     </div>
+    <% end %>
 
   </div>
 </div>
