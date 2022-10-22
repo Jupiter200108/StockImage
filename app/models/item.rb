@@ -5,6 +5,7 @@ class Item < ApplicationRecord
   belongs_to :end_user
   has_many :cart_items,dependent: :destroy
   has_many :favorites, dependent: :destroy
+  has_many :order_details
 
   #validates :image, presence: true
   #validates :name, presence: true, uniqueness: true
