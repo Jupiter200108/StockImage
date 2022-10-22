@@ -22,7 +22,7 @@
 
 
 .drawer--right.drawer-open .drawer-hamburger {
-    right: 0rem;
+    right: 3rem;
 }
 
 .drawer-overlay {
@@ -35,25 +35,6 @@
     height: 100%;
     background-color: rgba(0,0,0,.2);
 }
-
-.drawer-hamburger {
-    position: fixed;
-    z-index: 4;
-    top: 0;
-    display: block;
-    box-sizing: content-box;
-    width: 3rem;
-    padding: 0;
-    padding: 0px 0.75rem 0px;
-    -webkit-transition: all .6s cubic-bezier(.19,1,.22,1);
-    transition: all .6s cubic-bezier(.19,1,.22,1);
-    -webkit-transform: translateZ(0);
-    transform: translateZ(0);
-    border: 0;
-    outline: 0;
-    background-color: transparent;
-}
-
 
 .f-img {
   flex-grow: 1;

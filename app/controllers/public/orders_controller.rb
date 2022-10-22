@@ -38,14 +38,14 @@ class Public::OrdersController < ApplicationController
     pp Order.new, order_params
     @order = Order.new(order_params)
     @order.save
-    # @cart_items = current_end_user.cart_items.all
-      # @cart_items.each do |cart_item|
-        # @order_details = OrderDetail.new
-        # @order_details.item_id = cart_item.item.id
-        # @order_details.order_id =@order.id
-        # @order_details.save
-      # end
-      # current_end_user.cart_items.destroy_all
+    @cart_items = current_end_user.cart_items.all
+      @cart_items.each do |cart_item|
+        @order_details = OrderDetail.new
+        @order_details.item_id = cart_item.item.id
+        @order_details.order_id =@order.id
+        @order_details.save
+      end
+      current_end_user.cart_items.destroy_all
     redirect_to orders_thanks_path
 
   end

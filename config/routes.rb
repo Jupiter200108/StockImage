@@ -26,8 +26,8 @@ Rails.application.routes.draw do
     resources :orders,only:[:new, :index, :show, :edit, :create, :update]
 
     resources :end_users,only:[:show, :edit, :create, :update]
-    get '/end_users/unsubscribe' => "end_users#unsubscribe", as: "unsubscribe"
-    patch '/end_users/withdrawal' => "end_users#withdrawal", as: "withdrawal"
+    get '/end_users/:id/unsubscribe' => "end_users#unsubscribe", as: "unsubscribe"
+    patch '/end_users/:id/withdrawal' => "end_users#withdrawal", as: "withdrawal"
   end
 
   namespace :admin do

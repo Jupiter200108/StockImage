@@ -16,12 +16,13 @@
     <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
   </head>
   <body class="drawer drawer--right" style="z-index: 100;">
-    <header class="col-md-12 d-flex border border-3 p-2" role="banner">
-      <div>
+    <header class="col-md-12 d-flex justify-content-center border-bottom border-3 p-2" role="banner">
+      <div class="align-items-center">
       <%= link_to root_path do %>
         <%= image_tag '/images/logo.png',size: "150x45" %>
       <% end %>
       </div>
+
     	<% if admin_signed_in? %>
     	  <div class="col-md-9">
         	<%= link_to '商品一覧', admin_items_path,class: "btn btn-sm border border-3" %>
@@ -30,57 +31,49 @@
         	<%= link_to 'カテゴリー一覧', admin_categories_path,class: "btn btn-sm border border-3" %>
         	<%= link_to 'ログアウト', destroy_admin_session_path, method: :delete,class: "btn btn-sm border border-3" %>
         </div>
-
     	<% elsif end_user_signed_in? %>
     	  <div class="col-md-4 my-auto">
         	<%= link_to '商品一覧', items_path,class: "btn btn-sm border border-3" %>
     	  </div>
-      	<div class="col-md-2 ml-auto my-auto text-right d-flex justify-content-around">
-      	  <div>
-            <%= link_to cart_items_path do %>
-          	  <i class="fa-solid fa-cart-shopping h5 my-auto" style="color: black;"></i>
-          	<% end %>
-        	</div>
-      	  <div>
-        	  <i class="fas fa-heart h4 my-auto" aria-hidden="true"></i>
+      	<div class="col-md-2 ml-auto my-auto text-right px-0">
+          <%= link_to cart_items_path do %>
+        	  <i class="fa-solid fa-cart-shopping  fa-lg" style="color: black;"></i>
+        	<% end %>
+      	  <i class="fas fa-heart fa-lg"></i>
+        	<div class="btn drawer-toggle px-0 py-0" style="z-index: 100;">
+            <i class="fa-regular fa-user rounded-circle bg-secondary text-white p-2 my-1"></i>
           </div>
-
-      	  <div>
-          	<button class="drawer-toggle drawer-hamburger mt-2" style="z-index: 100;">
-              <span><i class="fa-regular fa-user rounded-circle bg-secondary text-white p-3 my-auto"></i></span>
-            </button>
-            <div class="drawer-nav" style="z-index: 90;">
-              <div class="drawer-content drawer-content-scrollable">
-                <div class="drawer-header py-5 text-center bg-light shadow">
-                  <h6 class="drawer-title">こんにちは、<%= current_end_user.name %>さん！</h6>
-                </div>
-                <div class="drawer-body px-4">
-                  <div class="py-3 text-left">
-                    <%= link_to end_user_path(current_end_user.id),class: "btn btn-sm h2" do %>
-                  　   <div class = "d-flex justify-content-center"><i class="fa-solid fa-gear h5 my-auto pr-2"></i>アカウント詳細</div>
-                  　<% end %>
-                  </div>
-                  <div class="py-3 text-left">
-                    <%= link_to destroy_end_user_session_path, method: :delete,class: "btn btn-sm h2" do %>
-                      <div class = "d-flex justify-content-center"><i class="fa-solid fa-arrow-right h5 my-auto pr-2"></i>ログアウト</div>
-                  　<% end %>
-                  </div>
-                </div>
-                <div class="drawer-footer"></div>
+          <div class="drawer-nav" style="z-index: 90;">
+            <div class="drawer-content drawer-content-scrollable">
+              <div class="drawer-header py-5 text-center bg-light shadow">
+                <h6 class="drawer-title">こんにちは、<%= current_end_user.name %>さん！</h6>
               </div>
+              <div class="drawer-body px-4">
+                <div class="py-3 text-left">
+                  <div class="py-3 text-left">
+                  <%= link_to end_user_path(current_end_user.id), class: 'd-flex text-dark text-decoration-none' do %>
+                    <i class="fa-solid fa-gear fa-lg my-auto pr-2"></i><div class = "h5 my-auto">アカウント詳細</div>
+                　<% end %>
+                </div>
+                <div class="py-3 text-left">
+                  <%= link_to destroy_end_user_session_path, method: :delete, class: 'd-flex text-dark text-decoration-none' do %>
+                    <i class="fa-solid fa-arrow-right fa-lg my-auto pr-2"></i><div class = "h5 my-auto">ログアウト</div>
+                　<% end %>
+                </div>
+              </div>
+              <div class="drawer-footer"></div>
             </div>
           </div>
       	</div>
-
-    	<% else %>
+    　<% else %>
     	  <div class="col-md-4 my-auto">
         	<%= link_to '商品一覧', items_path,class: "btn btn-sm border border-3" %>
     	  </div>
       	<div class="col-md-4 ml-auto my-auto text-right">
         	<%= link_to cart_items_path,class: "btn btn-sm btn btn-light rounded-pill" do %>
-        	  <i class="fa-solid fa-cart-shopping" style="color: black;"></i>
+        	  <i class="fa-solid fa-cart-shopping fa-lg" style="color: black;"></i>
         	<% end %>
-        	<i class="fas fa-heart h4 my-auto" aria-hidden="true"></i>
+        	<i class="fas fa-heart fa-lg" aria-hidden="true"></i>
         	<%= link_to 'ログイン', new_end_user_session_path,class: "btn btn-sm btn btn-light rounded-pill border border-3" %>
         	<%= link_to 'サインアップ', new_end_user_registration_path,class: "btn btn-sm btn-outline-danger rounded-pill border border-3 text-b" %>
       	</div>
