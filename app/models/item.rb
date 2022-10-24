@@ -12,8 +12,8 @@ class Item < ApplicationRecord
   validates :introduction, presence: true
   validates :genre_id, presence: true
   validates :category_id, presence: true
-  validates :price, presence: true
-  validates :is_active, inclusion: [true, false]
+  # validates :price, presence: true
+  # validates :is_active, inclusion: [true, false]
 
   def favorited_by?(end_user)
     favorites.where(end_user_id: end_user.id).exists?

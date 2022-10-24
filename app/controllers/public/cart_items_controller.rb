@@ -25,7 +25,7 @@ class Public::CartItemsController < ApplicationController
   def create
     @cart_item = current_end_user.cart_items.new(cart_item_params)
     @cart_items=current_end_user.cart_items.all
-    
+
     @cart_item.save
     redirect_to :cart_items
   end
