@@ -1,4 +1,9 @@
 class Public::FavoritesController < ApplicationController
+
+  def index
+    @favorites = current_end_user.favorites.page(params[:page]).per(20)
+  end
+
   def create
     item = Item.find(params[:item_id])
     @favorite = current_end_user.favorites.new(item_id: item.id)

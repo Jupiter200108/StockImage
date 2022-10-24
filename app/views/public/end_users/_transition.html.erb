@@ -1,0 +1,25 @@
+<ul class="nav flex-column">
+  <li class="nav-item my-2">
+    <div class="h5 text-black-50">マイアカウント</div>
+  </li>
+  <li class="nav-item">
+    <%= link_to end_user_path(current_end_user.id),class: 'nav-link text-dark' do %>
+      <i class="fa-regular fa-user fa-lg pr-4"></i>プロフィール
+    <% end %>
+  </li>
+  <li class="nav-item">
+    <%= link_to orders_path,class: 'nav-link text-dark' do %>
+      <i class="fa-solid fa-bag-shopping fa-lg pr-4"></i>購入履歴
+    <% end %>
+  </li>
+  <li class="nav-item">
+    <%= link_to favorites_path,class: 'nav-link text-dark' do %>
+      <i class="fa-solid fa-heart fa-lg pr-4"></i>保存一覧
+    <% end %>
+  </li>
+  <li class="nav-item">
+    <%= link_to new_item_path,class: 'nav-link text-dark' do %>
+      <i class="fa-regular fa-images fa-lg pr-4"></i>投稿・一覧
+    <% end %>
+  </li>
+</ul>

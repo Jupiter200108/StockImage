@@ -7,12 +7,13 @@ class Item < ApplicationRecord
   has_many :favorites, dependent: :destroy
   has_many :order_details
 
-  #validates :image, presence: true
-  #validates :name, presence: true, uniqueness: true
-  #validates :introduction, presence: true
-  #validates :genre_id, presence: true
-  #validates :price, presence: true
-  #validates :is_active, inclusion: [true, false]
+  validates :content, presence: true
+  validates :name, presence: true, uniqueness: true
+  validates :introduction, presence: true
+  validates :genre_id, presence: true
+  validates :category_id, presence: true
+  validates :price, presence: true
+  validates :is_active, inclusion: [true, false]
 
   def favorited_by?(end_user)
     favorites.where(end_user_id: end_user.id).exists?

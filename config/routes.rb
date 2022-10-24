@@ -18,6 +18,9 @@ Rails.application.routes.draw do
     resources :items,only:[:new, :index, :show, :edit, :create, :update] do
       resource :favorites, only: [:create, :destroy]
     end
+
+    resources :favorites,only:[:index]
+
     resources :cart_items,only:[:create, :index, :update, :destroy]
     get '/cart_items/destroy_all' => "cart_items#destroy_all"
 

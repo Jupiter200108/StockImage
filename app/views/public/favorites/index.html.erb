@@ -1,0 +1,41 @@
+<div class="container-fluid">
+  <div class="row mx-0">
+    <!--サイドバー-->
+    <div class="col-md-2 border-right border-3 mt-4">
+      <%= render "public/end_users/transition" %>
+    </div>
+    <!--プロフィールの内容-->
+    <div class="col-md-10">
+      <div class="row">
+        <div class="col-12 my-5">
+          <h2>保存一覧</h2>
+        </div>
+
+        <div class="row col-md-12 mx-0">
+          <div class="col-md-12 d-flex flex-wrap">
+            <% @favorites.each do |favorite| %>
+              <div class="col-md-3 px-0">
+                <div class=" row border border-3 rounded-lg px-2 py-2 mx-1 my-1">
+                  <div class="col-4 shadow px-0">
+                    <% if favorite.item.content.present?%>
+                      <% if favorite.item.content.content_type.include?('image/')%>
+                        <%= image_tag favorite.item.content,class:"card-img-top image-fluid",size: "60" %>
+                      <% else %>
+                        <%= video_tag rails_blob_path(favorite.item.content), class: "card-img-top image-fluid",controls: true,size: "60" %>
+                      <% end%>
+                    <% end %>
+                  </div>
+                  <div class="col-8">
+                    <div class="text-black-50 py-1">ID:<%=favorite.item.id %></div>
+                    <div class="pb-1"><%=favorite.item.name %></div>
+                  </div>
+                </div>
+              </div>
+            <% end %>
+          </div>
+        </div>
+      </div>
+      <%= paginate @favorites %>
+    </div>
+  </div>
+</div>

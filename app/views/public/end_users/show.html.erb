@@ -1,69 +1,47 @@
-<div class="container-fluid d-flex flex-wrap">
-  <div class="col-md-2 border-right border-3 mt-4">
-    <ul class="nav flex-column">
-      <li class="nav-item my-2">
-        <div class="h5 text-black-50">マイアカウント</div>
-      </li>
-      <li class="nav-item">
-        <%= link_to end_user_path(current_end_user.id),class: 'nav-link text-dark' do %>
-          <i class="fa-regular fa-user fa-lg pr-4"></i>プロフィール
-        <% end %>
-      </li>
-      <li class="nav-item">
-        <%= link_to orders_path,class: 'nav-link text-dark' do %>
-          <i class="fa-solid fa-bag-shopping fa-lg pr-4"></i>購入履歴
-        <% end %>
-      </li>
-      <li class="nav-item">
-        <a class="nav-link text-dark" href="#"><i class="fa-solid fa-heart fa-lg pr-4"></i>保存一覧</a>
-      </li>
-      <li class="nav-item">
-        <%= link_to new_item_path,class: 'nav-link text-dark' do %>
-          <i class="fa-regular fa-images fa-lg pr-4"></i>投稿・一覧
-        <% end %>
-      </li>
-    </ul>
-  </div>
-
-  <div class="col-md-10">
-    <div class="row col-12 my-5">
-      <h2>プロフィール</h2>
+<div class="container-fluid">
+  <div class="row mx-0">
+    <!--サイドバー-->
+    <div class="col-md-2 border-right border-3 mt-4">
+      <%= render "transition" %>
     </div>
-    <div class="row col-md-12">
-      <div class="row col-md-12">
-        <h4>ユーザー詳細</h4>
+    <!--プロフィールの内容-->
+    <div class="col-md-10">
+      <div class="row col-12 my-5">
+        <h2>プロフィール</h2>
       </div>
-      <div class="row col-md-12 my-2">
-        <div class="col-md-8 d-flex flex-wrap border border-2 rounded-lg">
-          <div class="col-md-5 py-2 border-bottom border-2">氏名</div>
-          <div class="col-md-7 py-2 border-bottom border-2 py-2 border-bottom border-2 text-black-50"><%= @end_user.name %></div>
-          <div class="col-md-5 py-2 border-bottom border-2">ユーザーID</div>
-          <div class="col-md-7 py-2 border-bottom border-2 text-black-50"><%= @end_user.id %></div>
-          <div class="col-md-5 py-2 border-bottom border-2">メールアドレス</div>
-          <div class="col-md-7 py-2 border-bottom border-2 text-black-50"><%= @end_user.email %></div>
-          <div class="col-md-2 py-2 ml-auto">
-          <%= link_to "編集する", edit_end_user_path,class: 'btn btn-sm btn-outline-success rounded-pill border border-2' %>
+      <div class="row col-md-12">
+        <div class="row col-md-12">
+          <h4>ユーザー詳細</h4>
+        </div>
+        <div class="row col-md-12 my-2">
+          <div class="col-md-8 d-flex flex-wrap border border-2 rounded-lg px-0">
+            <div class="col-md-5 py-2 border-bottom border-2">氏名</div>
+            <div class="col-md-7 py-2 border-bottom border-2 border-bottom border-2 text-black-50"><%= @end_user.name %></div>
+            <div class="col-md-5 py-2 border-bottom border-2">ユーザーID</div>
+            <div class="col-md-7 py-2 border-bottom border-2 text-black-50"><%= @end_user.id %></div>
+            <div class="col-md-5 py-2 border-bottom border-2">メールアドレス</div>
+            <div class="col-md-7 py-2 border-bottom border-2 text-black-50"><%= @end_user.email %></div>
+            <div class="col-md-2 py-2 ml-auto">
+            <%= link_to "編集する", edit_end_user_path,class: 'btn btn-sm btn-outline-success rounded-pill border border-2' %>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="row col-md-12 my-5">
+        <div class="row col-md-12">
+          <h4>アカウントの退会</h4>
+        </div>
+        <div class="row col-md-12 my-2">
+          <div class="col-md-8 d-flex flex-wrap border border-2 rounded-lg px-0">
+
+            <div class="col-md-12 py-2">
+            <%= link_to "退会する", unsubscribe_path(current_end_user.id),class: 'btn btn-sm btn-outline-danger rounded-pill border border-2' %>
+            </div>
           </div>
         </div>
       </div>
     </div>
-
-    <div class="row col-md-12 my-5">
-      <div class="row col-md-12">
-        <h4>アカウントの退会</h4>
-      </div>
-      <div class="row col-md-12 my-2">
-        <div class="col-md-8 d-flex flex-wrap border border-2 rounded-lg">
-
-          <div class="col-md-12 py-2">
-          <%= link_to "退会する", unsubscribe_path(current_end_user.id),class: 'btn btn-sm btn-outline-danger rounded-pill border border-2' %>
-          </div>
-        </div>
-      </div>
-    </div>
+    <!--end-->
   </div>
-
-
 </div>
-
-
