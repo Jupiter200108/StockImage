@@ -1,33 +1,47 @@
-<div class="container">
-  <div class="row col-12 px-5 ml-5">
-    <div class="col-md-6 col-sm-12 rounded ml-5 px-5 my-4">
-      <h3>注文情報入力</h3>
-    </div>
-
-  </div>
-
+<div class="container px-0">
   <%= form_with model: @order,url: orders_confirm_path, method: :post, local: true do |f| %>
-    <div class="row">
-      <div class="col-md-12">
-        <h4><strong>支払方法</strong></h4>
+    <div class="row col-md-10 mx-0 px-0">
+      <div class="col-md-7">
+        <div class="row col-md-12 mx-0 px-0">
+          <div class="col-6 my-5 px-0">
+            <h3>お支払い方法選択</h3>
+          </div>
+        </div>
+        <div class="col-md-10">
+          <div class="col-md-12 d-flex border border-3 rounded-lg my-2 py-2 px-2">
+            <%= f.radio_button :payment_method, Order.payment_methods.key(0) %>
+            <%= f.label :payment_method_credit_card, Order.payment_methods_i18n[:credit_card], class: "h5 my-auto" %>
+          </div>
+        </div>
+        <div class="col-md-10">
+          <div class="col-md-12 d-flex border border-3 rounded-lg my-2 py-2 px-2">
+            <%= f.radio_button :payment_method, Order.payment_methods.key(1) %>
+            <%= f.label :payment_method_transfer, Order.payment_methods_i18n[:transfer], class: "h5 my-auto"%>
+          </div>
+        </div>
+      </div>
+
+      <div class="col-md-5">
+        <div class="col-md-12">
+          <div class="row col-md-12 mx-0 px-0">
+            <div class="col-12 my-5 px-0">
+              <h3>ご注文の内容</h3>
+            </div>
+          </div>
+          <div class="col-md-12 border border-3 rounded-lg my-2 py-3 px-2">
+            <% @cart_items.each do |cart_item| %>
+              <div class="d-flex justify-content-between">
+                <div>ID:<%=cart_item.item.id %></div><div><%=cart_item.item.name %></div>
+              </div>
+            <% end %>
+            <hr class="col-10">
+            <div class="my-3 d-flex justify-content-between">
+              <div>お支払い金額</div><div><%#= @total_payment.to_s(:delimited)  %></div>
+            </div>
+            <%= f.submit "確認画面へ進む",class: 'btn btn-block mybtn btn-primary text-white tx-tfm rounded-pill' %>
+          </div>
+        </div>
       </div>
     </div>
-
-    <div class="row col-12 px-5 mx-0 mb-3">
-      <div class="custom-control custom-radio col-12">
-        <%= f.radio_button :payment_method, Order.payment_methods.key(0) %>
-        <%= f.label :payment_method_credit_card, Order.payment_methods_i18n[:credit_card], class: "h5" %>
-      </div>
-      <div class="custom-control custom-radio col-12">
-        <%= f.radio_button :payment_method, Order.payment_methods.key(1) %>
-        <%= f.label :payment_method_transfer, Order.payment_methods_i18n[:transfer], class: "h5"%>
-      </div>
-    </div>
-
-
-    <div class="col text-center mb-5">
-      <%= f.submit "確認画面へ進む",class: 'btn btn-outline-primary' %>
-    </div>
-
   <% end %>
 </div>

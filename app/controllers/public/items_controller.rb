@@ -1,13 +1,14 @@
 class Public::ItemsController < ApplicationController
   def new
     @item = Item.new
+    @items = current_end_user.items.all
   end
 
   def create
     @item = Item.new(item_params)
     @item.end_user_id = current_end_user.id
     if @item.save
-      redirect_to item_path(@item.id)
+       @items = current_end_user.items.all
     else
       @item = Item.new
       render :new
@@ -20,7 +21,7 @@ class Public::ItemsController < ApplicationController
   end
 
   def index
-    @items = Item.page(params[:page]).per(100)
+    @items = Item.page(params[:page]).per(80)
   end
 
   def edit

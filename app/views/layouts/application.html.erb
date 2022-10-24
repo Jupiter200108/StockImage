@@ -36,10 +36,12 @@
         	<%= link_to '商品一覧', items_path,class: "btn btn-sm border border-3" %>
     	  </div>
       	<div class="col-md-2 ml-auto my-auto text-right px-0">
-          <%= link_to cart_items_path do %>
+          <%= link_to cart_items_path,class: "btn btn-sm btn btn-light rounded-pill" do %>
         	  <i class="fa-solid fa-cart-shopping  fa-lg" style="color: black;"></i>
         	<% end %>
-      	  <i class="fas fa-heart fa-lg"></i>
+      	  <%= link_to favorites_path,class: 'btn btn-sm btn btn-light rounded-pill' do %>
+            <i class="fas fa-heart fa-lg" aria-hidden="true"></i>
+          <% end %>
         	<div class="btn drawer-toggle px-0 py-0" style="z-index: 100;">
             <i class="fa-regular fa-user rounded-circle bg-secondary text-white p-2 my-1"></i>
           </div>
@@ -73,8 +75,10 @@
         	<%= link_to cart_items_path,class: "btn btn-sm btn btn-light rounded-pill" do %>
         	  <i class="fa-solid fa-cart-shopping fa-lg" style="color: black;"></i>
         	<% end %>
-        	<i class="fas fa-heart fa-lg" aria-hidden="true"></i>
-        	<%= link_to 'ログイン', new_end_user_session_path,class: "btn btn-sm btn btn-light rounded-pill border border-3" %>
+        	<%= link_to favorites_path,class: 'btn btn-sm btn btn-light rounded-pill' do %>
+            <i class="fas fa-heart fa-lg" aria-hidden="true"></i>
+          <% end %>
+        	<%= link_to 'ログイン', new_end_user_session_path,class: "btn btn-sm btn-outline-danger bg-l rounded-pill border border-3 text-b" %>
         	<%= link_to 'サインアップ', new_end_user_registration_path,class: "btn btn-sm btn-outline-danger rounded-pill border border-3 text-b" %>
       	</div>
     	<% end %>

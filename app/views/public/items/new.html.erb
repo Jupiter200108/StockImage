@@ -1,39 +1,21 @@
-<div class="container col-6 shadow mt-5">
-  <div class="row col-8 mx-auto d-flex justify-content-center">
-    <div class="mt-5 mb-4 ml-5　mx-auto">
-      <h3>画像・動画新規登録</h3>
+<div class="container-fluid">
+  <div class="row mx-0">
+    <!--サイドバー-->
+    <div class="col-md-2 border-right border-3 mt-4">
+      <%= render "public/end_users/transition" %>
     </div>
-  </div>
-  <%= form_with model: @item,url: items_path,method: :post do |f| %>
-    <div class="row col-12 d-flex mx-auto justify-content-center">
-      <table class ="table-sm">
-        <tr>
-          <td class="col-4"><%= f.label :content,"画像・動画" %></td>
-          <td class="col-4"><%= f.file_field :content, accept: "image/*" %></td>
-        </tr>
-        <tr>
-          <td class="col-4"><%= f.label :name,"タイトル" %></td>
-          <td class="col-4"><%= f.text_field :name, class: "col-10 px-1" %></td>
-        </tr>
-        <tr>
-          <td class="col-4 align-top"><%= f.label :introduction,"説明" %></td>
-          <td class="col-4"><%= f.text_area :introduction, class: "col-10 px-1",rows: "7" %></td>
-        </tr>
-        <tr>
-          <td class="col-4"><%= f.label :genre_id,"ジャンル" %></td>
-          <td class="col-4"><%= f.select :genre_id, options_from_collection_for_select(Genre.all, :id, :name), {prompt: "選択してください"}, class: "form-control-sm col-10 pl-1" %></td>
-        </tr>
-        <tr>
-          <td class="col-4"><%= f.label :category_id,"カテゴリー" %></td>
-          <td class="col-4"><%= f.select :category_id, options_from_collection_for_select(Category.all, :id, :name), {prompt: "選択してください"}, class: "form-control-sm col-10 pl-1" %></td>
-        </tr>
+    <!--プロフィールの内容-->
+    <div class="col-md-10">
+      <div class="row">
+        <div class="col-12 my-5">
+          <h2>動画・画像新規登録</h2>
+        </div>
 
-      </table>
-    </div>
-    <div class="row col-12 mx-auto d-flex justify-content-center">
-      <div class="mt-5 mb-4 ml-5 mx-auto">
-        <%= f.submit "新規登録", class: "btn btn-sm btn-outline-success text-center rounded-pill border border-3" %>
+        <div class="row col-md-12 mx-0 item-new">
+          <%= render "public/items/btn", item: @item, items: @items %>
+        </div>
       </div>
     </div>
-  <% end %>
+  </div>
 </div>
+

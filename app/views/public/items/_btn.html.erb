@@ -1,0 +1,49 @@
+<div class="col-md-3">
+    <%= form_with model: item,url: items_path,method: :post, local: false do |f| %>
+  <div class="row d-flex border border-3 rounded-lg py-3 px-0 my-2">
+    <div class="col-4 align-top"><%= f.label :content,"画像・動画" %></div>
+    <div class="col-8 align-top"><%= f.file_field :content, accept: "image/*", class: "col-12 px-0" %></div>
+
+    <div class="col-4 align-top"><%= f.label :name,"タイトル" %></div>
+    <div class="col-8 align-top"><%= f.text_field :name, class: "col-12 px-1" %></div>
+
+    <div class="col-4 align-top"><%= f.label :introduction,"説明" %></div>
+    <div class="col-8 align-top"><%= f.text_area :introduction, class: "col-12 px-1",rows: "7" %></div>
+
+    <div class="col-4 align-top"><%= f.label :genre_id,"ジャンル" %></div>
+    <div class="col-8 align-top"><%= f.select :genre_id, options_from_collection_for_select(Genre.all, :id, :name), {prompt: "選択してください"}, class: "form-control-sm col-12 px-1" %></div>
+
+    <div class="col-4 align-top"><%= f.label :category_id,"カテゴリー" %></div>
+    <div class="col-8 align-top"><%= f.select :category_id, options_from_collection_for_select(Category.all, :id, :name), {prompt: "選択してください"}, class: "form-control-sm col-12 px-1" %></div>
+
+    <div class="col-5 align-top"><%= f.label :category_id,"公開ステータス" %></div>
+    <div class="col-3 align-top"><%= f.radio_button :is_active, :true, checked: true %><%= f.label :is_active_true,"公開" %></div>
+    <div class="col-3 align-top"><%= f.radio_button :is_active, :false %><%= f.label :is_active_false, "非公開" %></div>
+
+    <div class="col-12 text-center mt-4 mx-auto"><%= f.submit "新規登録", class: "btn btn-sm btn-outline-success text-center rounded-pill border border-3" %></div>
+  </div>
+    <% end %>
+</div>
+<div class="col-md-9">
+  <div class="d-flex flex-wrap">
+    <% items.each do |item| %>
+      <div class="col-md-3 px-0">
+        <div class=" row border border-3 rounded-lg px-2 py-2 mx-1 my-1">
+          <div class="col-4 shadow px-0">
+            <% if item.content.present?%>
+              <% if item.content.content_type.include?('image/')%>
+                <%= image_tag item.content,class:"card-img-top image-fluid",size: "60" %>
+              <% else %>
+                <%= video_tag rails_blob_path(item.content), class: "card-img-top image-fluid",controls: true,size: "60" %>
+              <% end%>
+            <% end %>
+          </div>
+          <div class="col-8">
+            <div class="text-black-50 py-1">ID:<%=item.id %></div>
+            <div class="pb-1"><%=item.name %></div>
+          </div>
+        </div>
+      </div>
+    <% end %>
+  </div>
+</div>

@@ -82,10 +82,12 @@ ActiveRecord::Schema.define(version: 2022_10_21_102723) do
   end
 
   create_table "favorites", force: :cascade do |t|
-    t.string "end_user_id"
-    t.string "item_id"
+    t.integer "end_user_id", null: false
+    t.integer "item_id", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.index ["end_user_id"], name: "index_favorites_on_end_user_id"
+    t.index ["item_id"], name: "index_favorites_on_item_id"
   end
 
   create_table "genres", force: :cascade do |t|
@@ -96,15 +98,18 @@ ActiveRecord::Schema.define(version: 2022_10_21_102723) do
   end
 
   create_table "items", force: :cascade do |t|
-    t.integer "end_user_id"
-    t.integer "category_id"
-    t.integer "genre_id"
+    t.integer "end_user_id", null: false
+    t.integer "category_id", null: false
+    t.integer "genre_id", null: false
     t.string "name"
     t.text "introduction"
     t.integer "contents_status"
     t.boolean "is_active", default: true, null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.index ["category_id"], name: "index_items_on_category_id"
+    t.index ["end_user_id"], name: "index_items_on_end_user_id"
+    t.index ["genre_id"], name: "index_items_on_genre_id"
   end
 
   create_table "order_details", force: :cascade do |t|
@@ -119,7 +124,7 @@ ActiveRecord::Schema.define(version: 2022_10_21_102723) do
   create_table "orders", force: :cascade do |t|
     t.integer "end_user_id", null: false
     t.integer "total_payment"
-    t.integer "payment_method"
+    t.integer "payment_method", default: 0, null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.index ["end_user_id"], name: "index_orders_on_end_user_id"
@@ -129,6 +134,11 @@ ActiveRecord::Schema.define(version: 2022_10_21_102723) do
   add_foreign_key "active_storage_variant_records", "active_storage_blobs", column: "blob_id"
   add_foreign_key "cart_items", "end_users"
   add_foreign_key "cart_items", "items"
+  add_foreign_key "favorites", "end_users"
+  add_foreign_key "favorites", "items"
+  add_foreign_key "items", "categories"
+  add_foreign_key "items", "end_users"
+  add_foreign_key "items", "genres"
   add_foreign_key "order_details", "items"
   add_foreign_key "order_details", "orders"
   add_foreign_key "orders", "end_users"
