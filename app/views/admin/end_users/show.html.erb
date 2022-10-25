@@ -1,29 +1,23 @@
 <div class="container">
   <div class="mb-4 mt-5">
-    <h3><%= @end_user.last_name %>　<%= @end_user.first_name %>さんの会員詳細</h3>
+    <h3><%= @end_user.name %>さんの会員詳細</h3>
   </div>
 
   <div class ="row col-12">
     <table class="col-8 table table-bordered">
       <tbody>
         <tr>
-          <td class ="table-dark pl-4" style="width: 30%">会員ID</td>
-          <td style="width: 70"%>
-            <%= @end_user.id %>
-          </td>
+          <td class ="table-dark pl-4" style="width: 30%">ID</td>
+          <td style="width: 70"%><%= @end_user.id %></td>
         </tr>
         <tr>
           <td class ="table-dark pl-4">氏名</td>
-          <td>
-            <%= @end_user.name %>
-          </td>
+          <td><%= @end_user.name %></td>
         </tr>
 
         <tr>
           <td class ="table-dark pl-4">メールアドレス</td>
-          <td>
-            <%= @end_user.email %>
-          </td>
+          <td><%= @end_user.email %></td>
         </tr>
         <tr>
           <td class ="table-dark pl-4">会員ステータス</td>
@@ -38,7 +32,6 @@
       </tbody>
     </table>
   </div>
-    <%= link_to "編集する", edit_admin_end_user_path(@end_user), class: 'btn btn-outline-success mr-3' %>
-    <%= link_to "注文履歴一覧", admin_order_path(@end_user), class: 'btn btn-outline-primary' %>
-
+    <%= link_to "編集する", edit_admin_end_user_path(@end_user.id), class: 'btn btn-outline-success mr-3' %>
+    <%= link_to "注文履歴一覧", admin_end_user_search_order_path(@end_user.id), class: 'btn btn-outline-primary' %>
 </div>

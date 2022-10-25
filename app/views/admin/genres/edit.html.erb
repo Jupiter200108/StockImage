@@ -1,16 +1,37 @@
+
+
+
 <div class="container">
-  <div class = "row">
+  <div class = "row col-md-12 justify-content-center my-5 mx-0">
     <div class = "col-lg-5">
-      <h3 class ="my-5">ジャンル編集</h3>
+      <div class="col-md-12 border rounded-lg py-4 px-2 my-1">
+        <div class="text-center py-4">
+          <h3>ジャンル編集</h3>
+        </div>
         <%= form_with model: @genre, url: admin_genre_path(@genre.id), method: :patch do |f| %>
-          <%= f.label :name,"ジャンル名",class: "mr-4" %>
-          <%= f.text_field :name, class: "mr-4" %>
-          <%= f.radio_button :contents_status, Genre.contents_statuses.key(0) %>
-          <%= f.label :contents_status_image, Genre.contents_statuses_i18n[:image], class: "h5" %>
-          <%= f.radio_button :contents_status, Genre.contents_statuses.key(1) %>
-          <%= f.label :contents_status_video, Genre.contents_statuses_i18n[:video], class: "h5"%>
-          <%= f.submit "変更を保存", class: "btn btn-sm btn-outline-success" %>
+          <div class="row col-md-12 mx-0">
+            <div class="col-5"><%= f.label :name,"ジャンル名" %></div>
+            <div class="col-7 px-0"><%= f.text_field :name, class: "col-12 px-1" %></div>
+          </div>
+
+          <div class="row col-md-12 mx-0">
+            <div class="col-5"></div>
+            <div class="col-7 px-0">
+              <%= f.radio_button :contents_status, Genre.contents_statuses.key(0) %>
+              <%= f.label :contents_status_image, Genre.contents_statuses_i18n[:image], class: "h5" %>
+              <%= f.radio_button :contents_status, Genre.contents_statuses.key(1) %>
+              <%= f.label :contents_status_video, Genre.contents_statuses_i18n[:video], class: "h5"%>
+            </div>
+          </div>
+
+          <div class="row col-12 justify-content-center mx-0">
+            <%= f.submit "変更を保存", class: "btn btn-block mybtn btn-success text-white tx-tfm rounded-pill mt-4" %>
+          </div>
+          <div class="row col-12 justify-content-center mx-0">
+            <%= link_to "キャンセル",admin_genre_path, class: "btn btn-block mybtn btn-light tx-tfm rounded-pill" %>
+          </div>
         <% end %>
+      </div>
     </div>
   </div>
 </div>

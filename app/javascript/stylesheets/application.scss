@@ -63,6 +63,10 @@ a {
   color: black;
 }
 
+.btn-outline-primary {
+    color: #007bff;
+}
+
 .bg-l {
   background-color: #f8f9fa;
 }
@@ -70,6 +74,8 @@ a {
 .text-r {
   color: #dc3545;
 }
+
+
 
 // レスポンシブのボーダーの調整
 // @media screen and (min-width: 768px) {

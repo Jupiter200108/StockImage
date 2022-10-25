@@ -1,4 +1,6 @@
 class Public::OrdersController < ApplicationController
+  before_action :authenticate_end_user!
+
   def new
     if current_end_user.cart_items.count != 0
       @order = Order.new

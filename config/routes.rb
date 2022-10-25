@@ -13,14 +13,14 @@ Rails.application.routes.draw do
     sessions: "admin/sessions"
   }
 
+  # 顧客用
   scope module: :public do
     root to: 'homes#top'
 
     resources :items,only:[:new, :index, :show, :edit, :create, :update] do
       resource :favorites, only: [:create, :destroy]
     end
-    get 'items/download/:id' => 'items#idownload', as: "image_download"
-    get 'items/download/:id' => 'items#vdownload', as: "video_download"
+    get 'items/download/:id' => 'items#download', as: "download"
 
     resources :favorites,only:[:index]
 
@@ -36,13 +36,20 @@ Rails.application.routes.draw do
     patch '/end_users/:id/withdrawal' => "end_users#withdrawal", as: "withdrawal"
   end
 
+  # 管理者用
   namespace :admin do
     get '/' => "homes#top"
     resources :items,only:[:index, :show, :edit, :update]
+
     resources :genres,only:[ :index, :edit, :create, :update]
+
     resources :categories,only:[ :index, :edit, :create, :update]
+
     resources :orders,only:[:show, :index, :update]
-    resources :end_users,only:[:show, :index, :edit, :update]
+
+    resources :end_users,only:[:show, :index, :edit, :update] do
+      get "search_order/:id" => "end_users#search_order", as: 'search_order'
+    end
   end
 
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html

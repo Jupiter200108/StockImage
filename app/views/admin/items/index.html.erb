@@ -7,7 +7,8 @@
       <thead class ="table-dark">
         <tr>
           <th>商品ID</th>
-          <th>商品名</th>
+          <th>投稿者</th>
+          <th>タイトル</th>
           <th>価格</th>
           <th>ジャンル</th>
           <th></th>
@@ -16,20 +17,12 @@
       <tbody>
         <% @items.each do |item| %>
         <tr>
-          <td>
-            <%= item.id %>
-          </td>
-          <td>
-            <%= link_to item.name,items_path(item.id), class: "text-dark" %>
-          </td>
-          <td>
-            ¥<%= item.price %>
-          </td>
-          <td>
-            <%= item.genre.name %>
-          </td>
-          <td>
-          </td>
+          <td><%= item.id %></td>
+          <td><%= item.end_user.name %></td>
+          <td><%= link_to item.name,admin_item_path(item.id), class: "text-dark" %></td>
+          <td>¥<%= item.price %></td>
+          <td><%= item.genre.name %></td>
+          <td><%= item.is_active_check %></td>
         </tr>
         <% end %>
       </tbody>

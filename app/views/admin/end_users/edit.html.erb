@@ -1,6 +1,6 @@
 <div class="container">
   <div class="mb-4 mt-5">
-    <h3><%= @end_user.last_name %>　<%= @end_user.first_name %>さんの会員情報編集</h3>
+    <h3><%= @end_user.name %>さんの会員情報編集</h3>
   </div>
   <%= form_with model: @end_user, url: admin_end_user_path do |f| %>
   <div class ="row col-12">
@@ -12,29 +12,8 @@
       <tr>
         <td class ="table-dark pl-4">氏名</td>
         <td class ="pl-3">
-            <%= f.text_field :last_name, autofocus: true, placeholder: '令和' %>
-            <%= f.text_field :first_name,placeholder: '道子' %>
+            <%= f.text_field :name, autofocus: true, placeholder: '令和道子' %>
         </td>
-      </tr>
-      <tr>
-        <td class ="table-dark pl-4">フリガナ</td>
-        <td class ="pl-3">
-          <%= f.text_field :last_name_kana,placeholder: 'レイワ' %>
-          <%= f.text_field :first_name_kana,placeholder: 'ミチコ' %>
-        </td>
-      </tr>
-      <tr>
-        <td class ="table-dark pl-4"><%= f.label :post_code,"郵便番号" %>
-        </td>
-        <td class ="pl-3"><%= f.text_field :post_code,placeholder: '0000000' %></td>
-      </tr>
-      <tr>
-        <td class ="table-dark pl-4"><%= f.label :address,"住所(ハイフンなし)" %></td>
-        <td class ="pl-3"><%= f.text_field :address, :size=>"46" ,placeholder: '東京都渋谷代々木神園町0-0'%></td>
-      </tr>
-      <tr>
-        <td class ="table-dark pl-4"><%= f.label :phone_number,"電話番号(ハイフンなし)" %></td>
-        <td class ="pl-3"><%= f.text_field :phone_number,placeholder: '00000000000' %></td>
       </tr>
       <tr>
         <td class ="table-dark pl-4"><%= f.label :email,"メールアドレス" %></td>

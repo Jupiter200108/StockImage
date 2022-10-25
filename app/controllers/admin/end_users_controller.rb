@@ -1,4 +1,6 @@
 class Admin::EndUsersController < ApplicationController
+  before_action :authenticate_admin!
+  
   def index
     @end_users = EndUser.page(params[:page]).per(10)
   end
@@ -19,6 +21,15 @@ class Admin::EndUsersController < ApplicationController
       render :edit
     end
   end
+
+  def search_order
+    @genres = Genre.all
+    @end_user = EndUser.find(params[:id])
+    @end_userorders = Order.where(end_user_id: @end_user.id)
+    # @search = Item.ransack(params[:q])
+    # @items = @search.result
+  end
+
   private
   def end_user_params
     params.require(:end_user).permit(:name, :email, :is_deleted)

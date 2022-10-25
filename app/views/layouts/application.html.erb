@@ -18,18 +18,24 @@
   <body class="drawer drawer--right" style="z-index: 100;">
     <header class="col-md-12 d-flex justify-content-center border-bottom border-3 p-2" role="banner">
       <div class="align-items-center">
-      <%= link_to root_path do %>
-        <%= image_tag '/images/logo.png',size: "150x45" %>
-      <% end %>
+        <% if admin_signed_in? %>
+          <%= link_to admin_path do %>
+            <%= image_tag '/images/logo.png',size: "150x45" %>
+          <% end %>
+        <% else %>
+          <%= link_to root_path do %>
+            <%= image_tag '/images/logo.png',size: "150x45" %>
+          <% end %>
+        <% end %>
       </div>
 
     	<% if admin_signed_in? %>
-    	  <div class="col-md-9">
-        	<%= link_to '商品一覧', admin_items_path,class: "btn btn-sm border border-3" %>
-        	<%= link_to 'ユーザー一覧', admin_end_users_path,class: "btn btn-sm border border-3" %>
-        	<%= link_to 'ジャンル一覧', admin_genres_path,class: "btn btn-sm border border-3" %>
-        	<%= link_to 'カテゴリー一覧', admin_categories_path,class: "btn btn-sm border border-3" %>
-        	<%= link_to 'ログアウト', destroy_admin_session_path, method: :delete,class: "btn btn-sm border border-3" %>
+    	  <div class="col-md-11 d-flex flex-wrap align-items-center">
+    	    <div class="col-1 px-0 text-center"><%= link_to '商品一覧', admin_items_path,class: "btn btn-sm border border-3" %></div>
+    	    <div class="col-1 px-0 text-center"><%= link_to 'ユーザー一覧', admin_end_users_path,class: "btn btn-sm border border-3" %></div>
+    	    <div class="col-1 px-0 text-center"><%= link_to 'ジャンル一覧', admin_genres_path,class: "btn btn-sm border border-3" %></div>
+    	    <div class="col-1 px-0 text-center"><%= link_to 'カテゴリー一覧', admin_categories_path,class: "btn btn-sm border border-3" %></div>
+    	    <div class="col-1 px-0 text-center"><%= link_to 'ログアウト', destroy_admin_session_path, method: :delete,class: "btn btn-sm border border-3" %></div>
         </div>
     	<% elsif end_user_signed_in? %>
     	  <div class="col-md-4 my-auto">
@@ -56,6 +62,24 @@
                   <%= link_to end_user_path(current_end_user.id), class: 'd-flex text-dark text-decoration-none' do %>
                     <i class="fa-solid fa-gear fa-lg my-auto pr-2"></i><div class = "h5 my-auto">アカウント詳細</div>
                 　<% end %>
+                </div>
+                <div class="py-3 text-left">
+                  <div class="py-3 text-left">
+                  <%= link_to orders_path,class: 'd-flex text-dark text-decoration-none' do %>
+                    <i class="fa-solid fa-bag-shopping fa-lg my-auto pr-2"></i><div class = "h5 my-auto">購入履歴</div>
+                  <% end %>
+                </div>
+                <div class="py-3 text-left">
+                  <div class="py-3 text-left">
+                  <%= link_to favorites_path,class: 'd-flex text-dark text-decoration-none' do %>
+                    <i class="fa-solid fa-heart fa-lg my-auto pr-2"></i><div class = "h5 my-auto">保存一覧</div>
+                  <% end %>
+                </div>
+                <div class="py-3 text-left">
+                  <div class="py-3 text-left">
+                  <%= link_to new_item_path,class: 'd-flex text-dark text-decoration-none' do %>
+                    <i class="fa-regular fa-images fa-lg my-auto pr-2"></i><div class = "h5 my-auto">投稿・一覧</div>
+                  <% end %>
                 </div>
                 <div class="py-3 text-left">
                   <%= link_to destroy_end_user_session_path, method: :delete, class: 'd-flex text-dark text-decoration-none' do %>

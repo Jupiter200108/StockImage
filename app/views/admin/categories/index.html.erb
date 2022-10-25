@@ -1,7 +1,7 @@
 <div class="container">
-  <div class = "row col-md-12 my-5 mx-0 justify-content-center">
-    <div class = "col-md-5">
-      <div class="col-md-12 py-4 px-2 border">
+  <div class = "row col-md-12 my-5 mx-0">
+    <div class = "col-xl-5">
+      <div class="col-md-12 border rounded-lg py-4 px-2 my-1">
         <div class="text-center py-4">
           <h3>カテゴリー一覧・追加</h3>
         </div>
@@ -12,32 +12,29 @@
           </div>
 
           <div class="row col-12 justify-content-center mx-0">
-            <%= f.submit "新規登録", class: "btn btn-sm btn-outline-danger mt-4" %>
+            <%= f.submit "新規登録", class: "btn btn-block mybtn btn-primary text-white tx-tfm rounded-pill mt-4" %>
           </div>
         <% end %>
       </div>
     </div>
-  </div>
 
-  <div class = "row col-md-12 my-5 mx-0  justify-content-center">
-    <div class = "col-md-5">
-      <div class = "col-md-12 border border-dark px-0">
+    <div class = "col-xl-7">
+      <div class = "col-md-12 border border-dark px-0 my-1">
         <div class="col-md-12 bg-secondary text-white text-center py-2">
           カテゴリー
         </div>
-
-        <% @categories.each do |category| %>
-        <div class="row col-12 mx-0 py-2 border-bottom">
-          <div class="col-md-7">
-            <%= category.name %>
+        <div class="row mx-0 px-0">
+          <% @categories.each do |category| %>
+          <div class="row col-6 mx-0 py-2 px-0 border-bottom align-items-center">
+            <div class="col-8 pr-0 text-short"><%= category.name %></div>
+            <div class="col-4 px-0">
+              <%= link_to "編集",edit_admin_category_path(category.id), class: "btn btn-sm btn-outline-success rounded-pill" %>
+            </div>
           </div>
-          <div class="col-md-5">
-            <%= link_to "編集する",edit_admin_category_path(category.id), class: "btn btn-sm btn-outline-success" %>
-          </div>
+          <% end %>
         </div>
-        <% end %>
       </div>
     </div>
-    
+
   </div>
 </div>

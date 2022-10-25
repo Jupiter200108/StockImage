@@ -13,12 +13,17 @@
     <div class="ol-md-12 col-lg-6">
       <div class="row mx-0 mp-0 justify-content-end">
         <div class="col-3 col-xl-2 d-flex align-items-center">
-          <% if current_end_user.ordered_items.ids.include?(@item.id) %>
-            <%= render "public/items/download", item: @item %>
+          <% if current_end_user.present? %>
+            <% if current_end_user.ordered_items.ids.include?(@item.id) %>
+              <%= render "public/items/download", item: @item %>
+            <% end %>
+          <% else %>
           <% end %>
         </div>
         <div class="col-3 col-xl-2 <%= "favorite-" + @item.id.to_s %>" >
-          <%= render "public/favorites/btn", item: @item %>
+          <% if current_end_user.present? %>
+            <%= render "public/favorites/btn", item: @item %>
+          <% end %>
         </div>
       </div>
       <div class="row col-12 mb-2">
@@ -46,10 +51,12 @@
         <div class="col-8 align-top">1000円</div>
       </div>
     </div>
-    <% if @item.end_user_id == current_end_user.id %>
-    <div class="col-md-12 text-center mt-5"><%= link_to "編集する", edit_item_path(@item.id), class: "btn btn-sm btn-outline-success rounded-pill border border-3" %></div>
-    <% elsif current_end_user.ordered_items.ids.include?(@item.id) %>
-    <% else %>
+    <% if current_end_user.present? %>
+      <% if @item.end_user_id == current_end_user.id %>
+        <div class="col-md-12 text-center mt-5"><%= link_to "編集する", edit_item_path(@item.id), class: "btn btn-sm btn-outline-success rounded-pill border border-3" %></div>
+      <% elsif current_end_user.ordered_items.ids.include?(@item.id) %>
+      <% else %>
+    <% end %>
     <div class="col-md-12 text-center mt-5">
       <%= form_with model: @cart_item, url: cart_items_path,  method: :post,multipart: true do |f| %>
         <%=f.hidden_field :item_id, :value => @item.id %>

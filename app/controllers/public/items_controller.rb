@@ -1,4 +1,6 @@
 class Public::ItemsController < ApplicationController
+  before_action :authenticate_end_user!, except: [:show, :index]
+
   def new
     @item = Item.new
     @items = current_end_user.items.all
@@ -38,7 +40,7 @@ class Public::ItemsController < ApplicationController
     end
   end
 
-  def idownload
+  def download
     item = Item.find(params[:id]).content
     data = item.download
     if item.content_type.include?('image/')
@@ -53,6 +55,6 @@ class Public::ItemsController < ApplicationController
   private
 
   def item_params
-    params.require(:item).permit(:end_user_id, :category_id, :genre_id, :name, :introduction, :price, :contents_status, :content)
+    params.require(:item).permit(:end_user_id, :category_id, :genre_id, :name, :introduction, :price, :contents_status, :content, :is_active)
   end
 end
