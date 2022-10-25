@@ -17,7 +17,7 @@ import "..//skippr.min"
 import "../script.js"
 // import "drawer.min"
 import "iscroll.min"
-import "../stylesheets/application"
+import "../stylesheets/application.scss"
 
 Rails.start()
 Turbolinks.start()
