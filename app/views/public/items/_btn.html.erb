@@ -20,30 +20,28 @@
     <div class="col-4 align-top"><%= f.radio_button :is_active, :true, checked: true %><%= f.label :is_active_true,"ON" %></div>
     <div class="col-4 align-top"><%= f.radio_button :is_active, :false %><%= f.label :is_active_false, "OFF" %></div>
 
+    <%= f.hidden_field :price %>
+
     <div class="col-12 text-center mt-4 mx-auto"><%= f.submit "新規登録", class: "btn btn-sm btn-outline-success text-center rounded-pill border border-3" %></div>
   </div>
     <% end %>
 </div>
 <div class="col-lg-6 col-xl-8">
-  <div class="d-flex flex-wrap">
+  <div class="d-flex flex-wrap py-1">
     <% items.each do |item| %>
-      <div class="col-md-6 col-lg-4 col-xl-3 px-0">
-        <div class=" row border border-3 rounded-lg px-2 py-2 mx-1 my-1">
-          <div class="col-4 shadow px-0">
-            <% if item.content.present?%>
-              <% if item.content.content_type.include?('image/')%>
-                <%= image_tag item.content,class:"card-img-top image-fluid",size: "60" %>
-              <% else %>
-                <%= video_tag rails_blob_path(item.content), class: "card-img-top image-fluid",controls: true,size: "60" %>
-              <% end%>
+        <div class="col-6 col-lg-4 col-xl-3 px-0">
+          <div class="border border-3 rounded-lg px-2 py-2 mx-1 my-1">
+            <%= link_to item_path(item.id), class: 'row text-dark text-decoration-none mx-0' do %>
+              <div class="col-4 shadow px-0 s-60">
+                <%= render "public/items/content", item: item %>
+              </div>
+              <div class="col-8">
+                <div class="text-black-50 py-1">ID:<%=item.id %></div>
+                <div class="pb-1 text-short"><%=item.name %></div>
+              </div>
             <% end %>
           </div>
-          <div class="col-8">
-            <div class="text-black-50 py-1">ID:<%=item.id %></div>
-            <div class="pb-1"><%=item.name %></div>
-          </div>
         </div>
-      </div>
     <% end %>
   </div>
 </div>

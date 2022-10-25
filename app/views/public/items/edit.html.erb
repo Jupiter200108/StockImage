@@ -47,6 +47,8 @@
           <div class="col-8 align-top"><%= f.radio_button :is_active, :true, checked: true %><%= f.label :is_active_true,"公開" %><%= f.radio_button :is_active, :false %><%= f.label :is_active_false, "非公開" %></div>
         </div>
 
+        <%=f.hidden_field :price %>
+
         <div class="row col-12 mx-auto d-flex justify-content-center">
           <div class="mt-4 ml-5 mx-auto"><%= f.submit "変更を保存", class: "btn btn-sm btn-outline-success rounded-pill border border-3" %></div>
         </div>

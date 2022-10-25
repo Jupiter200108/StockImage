@@ -3,22 +3,23 @@
   <h3>商品詳細</h3>
 </div>
 
-  <div class="row col-md-11 justify-content-center shadow-lg px-4 py-5">
+  <div class="row col-12 col-xl-11 justify-content-center shadow-lg px-4 py-5">
 
-    <div class="col-md-6 d-flex justify-content-center">
-      <% if @item.content.present?%>
-        <% if @item.content.content_type.include?('image/')%>
-          <%= image_tag @item.content,class:"card-img-top image-fluid" %>
-        <% else %>
-          <%= video_tag rails_blob_path(@item.content), class: "card-img-top image-fluid",controls: true %>
-        <% end%>
-      <% end %>
+    <div class="col-md-12 col-lg-6 d-flex justify-content-center s-400">
+      <%= render "public/items/content", item: @item %>
       <br>
     </div>
 
-    <div class="col-md-6">
-      <div class="<%= "favorite-" + @item.id.to_s %>" >
-        <%= render "public/favorites/btn", item: @item %>
+    <div class="ol-md-12 col-lg-6">
+      <div class="row mx-0 mp-0 justify-content-end">
+        <div class="col-3 col-xl-2 d-flex align-items-center">
+          <% if current_end_user.ordered_items.ids.include?(@item.id) %>
+            <%= render "public/items/download", item: @item %>
+          <% end %>
+        </div>
+        <div class="col-3 col-xl-2 <%= "favorite-" + @item.id.to_s %>" >
+          <%= render "public/favorites/btn", item: @item %>
+        </div>
       </div>
       <div class="row col-12 mb-2">
         <div class="col-4 align-top">タイトル</div>
@@ -47,6 +48,7 @@
     </div>
     <% if @item.end_user_id == current_end_user.id %>
     <div class="col-md-12 text-center mt-5"><%= link_to "編集する", edit_item_path(@item.id), class: "btn btn-sm btn-outline-success rounded-pill border border-3" %></div>
+    <% elsif current_end_user.ordered_items.ids.include?(@item.id) %>
     <% else %>
     <div class="col-md-12 text-center mt-5">
       <%= form_with model: @cart_item, url: cart_items_path,  method: :post,multipart: true do |f| %>

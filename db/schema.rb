@@ -103,6 +103,7 @@ ActiveRecord::Schema.define(version: 2022_10_21_102723) do
     t.integer "genre_id", null: false
     t.string "name"
     t.text "introduction"
+    t.integer "price", default: 1000, null: false
     t.integer "contents_status"
     t.boolean "is_active", default: true, null: false
     t.datetime "created_at", precision: 6, null: false
@@ -115,6 +116,7 @@ ActiveRecord::Schema.define(version: 2022_10_21_102723) do
   create_table "order_details", force: :cascade do |t|
     t.integer "item_id", null: false
     t.integer "order_id", null: false
+    t.integer "price"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.index ["item_id"], name: "index_order_details_on_item_id"

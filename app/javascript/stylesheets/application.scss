@@ -71,7 +71,32 @@ a {
   color: #dc3545;
 }
 
-// 自分の投稿の並び方
-.f-myimg {
-　width: (33%-15);
+// レスポンシブのボーダーの調整
+// @media screen and (min-width: 768px) {
+//   .border-md-right {
+//     border-right: 1px solid #dee2e6 !important;
+//   }
+// }
+
+.text-short {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+
+.s-60 {
+
+    .size {
+      height: 60px;
+    }
+
+}
+
+.s-400 {
+
+    .size {
+      height: 400px;
+    }
+
 }

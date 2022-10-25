@@ -1,0 +1,11 @@
+<% if item.content.present?%>
+  <% if item.content.content_type.include?('image/')%>
+    <%= link_to image_download_path(item) do %>
+      <i class="fa-solid fa-cloud-arrow-down fa-lg rounded-pill bg-danger text-white p-2"></i>
+    <% end %>
+  <% else %>
+    <%= link_to video_download_path(item) do %>
+      <i class="fa-solid fa-cloud-arrow-down fa-lg rounded-pill bg-danger text-white p-2"></i>
+    <% end %>
+  <% end %>
+<% end %>

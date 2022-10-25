@@ -15,9 +15,12 @@ Rails.application.routes.draw do
 
   scope module: :public do
     root to: 'homes#top'
+
     resources :items,only:[:new, :index, :show, :edit, :create, :update] do
       resource :favorites, only: [:create, :destroy]
     end
+    get 'items/download/:id' => 'items#idownload', as: "image_download"
+    get 'items/download/:id' => 'items#vdownload', as: "video_download"
 
     resources :favorites,only:[:index]
 

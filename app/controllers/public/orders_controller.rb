@@ -4,16 +4,21 @@ class Public::OrdersController < ApplicationController
       @order = Order.new
       @name = current_end_user.name
       @cart_items=current_end_user.cart_items.all
+      @total_payment = 0
     else
       redirect_to root_path
     end
   end
 
   def index
-    @orders = Order.page(params[:page]).per(6)
+    @orders = Order.page(params[:page]).per(10)
   end
 
   def show
+    if params[:id] == "confirm"
+      redirect_to root_path
+      return
+    end
     @order = current_end_user.orders.find(params[:id])
     @order_details=@order.order_details.all
   end
@@ -22,6 +27,7 @@ class Public::OrdersController < ApplicationController
   end
 
   def confirm
+    @total_payment = 0
     if current_end_user.cart_items.count != 0
       @order = Order.new(order_params)
       @cart_items = current_end_user.cart_items
@@ -42,6 +48,7 @@ class Public::OrdersController < ApplicationController
       @cart_items.each do |cart_item|
         @order_details = OrderDetail.new
         @order_details.item_id = cart_item.item.id
+        @order_details.price = cart_item.item.price
         @order_details.order_id =@order.id
         @order_details.save
       end
@@ -53,6 +60,6 @@ class Public::OrdersController < ApplicationController
   private
 
   def order_params
-    params.require(:order).permit(:end_user_id, :payment_method, :total_payment)
+    params.require(:order).permit(:end_user_id, :price, :payment_method, :total_payment)
   end
 end

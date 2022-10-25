@@ -31,12 +31,14 @@
           <div class="col-md-12 border border-3 rounded-lg my-2 py-3 px-2">
             <% @cart_items.each do |cart_item| %>
               <div class="d-flex justify-content-between">
-                <div>ID:<%=cart_item.item.id %></div><div><%=cart_item.item.name %></div>
+                <div>ID:<%=cart_item.item.id %>　<%=cart_item.item.name %></div>
+                <div>¥<%=cart_item.item.add_tax_price.to_s(:delimited) %></div>
               </div>
+              <% @total_payment+= cart_item.item.add_tax_price %>
             <% end %>
             <hr class="col-10">
             <div class="my-3 d-flex justify-content-between">
-              <div>お支払い金額</div><div><%#= @total_payment.to_s(:delimited)  %></div>
+              <div>お支払い金額</div><div>¥<%= @total_payment.to_s(:delimited)  %></div>
             </div>
             <%= f.submit "確認画面へ進む",class: 'btn btn-block mybtn btn-primary text-white tx-tfm rounded-pill' %>
           </div>

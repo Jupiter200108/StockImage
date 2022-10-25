@@ -13,8 +13,8 @@ import "bootstrap";
 import "../stylesheets/skippr"
 // import "../stylesheets/drawer"
 import '@fortawesome/fontawesome-free/js/all'
-import "skippr.min"
-import "script.js"
+import "..//skippr.min"
+import "../script.js"
 // import "drawer.min"
 import "iscroll.min"
 import "../stylesheets/application"

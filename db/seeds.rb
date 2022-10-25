@@ -6,8 +6,7 @@
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
 Admin.create!(
-   email: 'admin@admin3',
-   password: 'testtest'
+  {email: 'admin@admin4',password: 'testtest'}
 )
 
 Category.create!(
@@ -49,6 +48,7 @@ Genre.create!(
   {name: '人物画像',contents_status: 0},
   {name: 'ドット絵',contents_status: 0},
   {name: 'その他',contents_status: 0},
+  {name: 'その他',contents_status: 1},
  ]
 )
 

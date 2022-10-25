@@ -6,22 +6,31 @@
           <h3>注文情報確認</h3>
         </div>
       </div>
-      <div class="col-md-10">
-        <% @sum = 0 %>
-        <% @total = 0 %>
-        <% @cart_items.each do |cart_item| %>
+
+      <% @total = 0 %>
+      <% @cart_items.each do |cart_item| %>
+        <div class="col-md-10">
           <div class="col-md-12 d-flex border border-3 rounded-lg my-2 py-2 px-2">
-
-
-            <%= link_to item_path(cart_item.item.id) do %>
-              <%=image_tag cart_item.item.content,size: "50x50" %>
-              ID:<%=cart_item.item.id %>
-              <%= cart_item.item.name %>
-            <% end %>
-          　価格(税込)<%= @sum %><% @total %>
+            <div class="col-4 shadow px-0">
+              <% if cart_item.item.content.present?%>
+                <% if cart_item.item.content.content_type.include?('image/')%>
+                  <%= image_tag cart_item.item.content,class:"card-img-top image-fluid",size: "100" %>
+                <% else %>
+                  <%= video_tag rails_blob_path(cart_item.item.content), class: "card-img-top image-fluid",controls: true,size: "100" %>
+                <% end%>
+              <% end %>
+            </div>
+            <div class="col-8">
+              <div class="d-flex justify-content-between">
+                <div class="text-black-50 py-1">ID:<%=cart_item.item.id %></div>
+                <div>¥<%=cart_item.item.add_tax_price.to_s(:delimited) %></div>
+              </div>
+              <div class="pb-1"><%=cart_item.item.name %></div>
+            </div>
           </div>
-        <% end %>
-      </div>
+        </div>
+      <% end %>
+
     </div>
 
     <div class="col-md-5">
@@ -34,18 +43,22 @@
         <div class="col-md-12 border border-3 rounded-lg my-2 py-3 px-2">
           <% @cart_items.each do |cart_item| %>
             <div class="d-flex justify-content-between">
-              <div>ID:<%=cart_item.item.id %></div><div><%=cart_item.item.name %></div>
+              <div>ID:<%=cart_item.item.id %>　<%=cart_item.item.name %></div>
+              <div>¥<%=cart_item.item.add_tax_price.to_s(:delimited) %></div>
             </div>
+            <% @total_payment+= cart_item.item.add_tax_price %>
           <% end %>
           <hr class="col-10">
-          <div class="my-3 d-flex justify-content-between">
-            <div>お支払い金額</div><div><%= @total_payment %></div>
+          <div class="row mx-0 justify-content-between">
+            <div>お支払い金額</div><div>¥<%= @total_payment.to_s(:delimited) %></div>
+          </div>
+          <div class="row mx-0 justify-content-between">
             <div>支払方法</div><div><%= @order.payment_method_i18n %></div>
           </div>
         　<%= form_with model: @order_new , url: "/orders" , local:true do |f| %>
             <%= f.hidden_field :end_user_id, value: current_end_user.id %>
             <%= f.hidden_field :payment_method, value:  @order.payment_method %>
-            <%= f.hidden_field :total_payment, value: @total%>
+            <%= f.hidden_field :total_payment, value: @total_payment%>
           　<%= f.submit "注文を確定する",class: 'btn btn-block mybtn btn-success text-white tx-tfm rounded-pill' %>
         　<% end %>
         </div>

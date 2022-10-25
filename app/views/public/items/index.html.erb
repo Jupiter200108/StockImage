@@ -9,7 +9,13 @@
   <div class ="d-flex flex-wrap col-md-10 mx-auto">
     <% @items.each do |item| %>
       <%= link_to item_path(item.id) do %>
-        <%= image_tag item.content, class: "f-img" %>
+        <% if item.content.present?%>
+          <% if item.content.content_type.include?('image/')%>
+            <%= image_tag item.content,class:"card-img-top image-fluid f-img" %>
+          <% else %>
+            <%= video_tag rails_blob_path(item.content), class: "card-img-top image-fluid f-img",controls: true %>
+          <% end %>
+        <% end %>
       <% end %>
     <% end %>
     <div class ="f-end">

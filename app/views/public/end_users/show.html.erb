@@ -13,15 +13,15 @@
         <div class="row col-md-12">
           <h4>ユーザー詳細</h4>
         </div>
-        <div class="row col-md-12 my-2">
-          <div class="col-xl-8 d-flex flex-wrap border border-2 rounded-lg px-0">
-            <div class="col-md-5 py-2 border-bottom border-2">氏名</div>
-            <div class="col-md-7 py-2 border-bottom border-2 border-bottom border-2 text-black-50"><%= @end_user.name %></div>
-            <div class="col-md-5 py-2 border-bottom border-2">ユーザーID</div>
-            <div class="col-md-7 py-2 border-bottom border-2 text-black-50"><%= @end_user.id %></div>
-            <div class="col-md-5 py-2 border-bottom border-2">メールアドレス</div>
-            <div class="col-md-7 py-2 border-bottom border-2 text-black-50"><%= @end_user.email %></div>
-            <div class="col-md-2 py-2 ml-auto"><%= link_to "編集する", edit_end_user_path,class: 'btn btn-sm btn-outline-success rounded-pill border border-2' %></div>
+        <div class="row col-xl-8 my-2">
+          <div class="col-12 d-flex flex-wrap border border-2 rounded-lg px-0">
+            <div class="col-6 col-md-5 py-2 border-bottom border-2">氏名</div>
+            <div class="col-6 col-md-7 py-2 border-bottom border-2 border-bottom border-2 text-black-50"><%= @end_user.name %></div>
+            <div class="col-6 col-md-5 py-2 border-bottom border-2">ユーザーID</div>
+            <div class="col-6 col-md-7 py-2 border-bottom border-2 text-black-50"><%= @end_user.id %></div>
+            <div class="col-6 col-md-5 py-2 border-bottom border-2">メールアドレス</div>
+            <div class="col-6 col-md-7 py-2 border-bottom border-2 text-black-50"><%= @end_user.email %></div>
+            <div class="col-md-12 py-2 text-center text-md-right"><%= link_to "編集する", edit_end_user_path,class: 'btn btn-sm btn-outline-success rounded-pill border border-2' %></div>
           </div>
         </div>
       </div>
@@ -30,11 +30,11 @@
         <div class="row col-md-12">
           <h4>アカウントの退会</h4>
         </div>
-        <div class="row col-md-12 my-2">
-          <div class="col-xl-8 d-flex flex-wrap border border-2 rounded-lg px-0">
+        <div class="row col-xl-8 my-2">
+          <div class="col-xl-12 d-flex flex-wrap border border-2 rounded-lg px-0">
             <div class="col-md-12 py-2">
-              <div class="text-black-50">これにより、個人データは完全に閲覧出来なくなります。</div>
-              <div class="col-md-2 py-2"><%= link_to "退会する", unsubscribe_path(current_end_user.id),class: 'btn btn-sm btn-outline-danger text-r rounded-pill border border-2' %></div>
+              <div class="text-black-50">これにより、個人データは閲覧出来なくなります。</div>
+              <div class="col-md-2 py-2 px-0"><%= link_to "退会する", unsubscribe_path(current_end_user.id),class: 'btn btn-sm btn-outline-danger text-r rounded-pill border border-2 mx-0' %></div>
             </div>
           </div>
         </div>

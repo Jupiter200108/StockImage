@@ -7,7 +7,7 @@ class Public::ItemsController < ApplicationController
   def create
     @item = Item.new(item_params)
     @item.end_user_id = current_end_user.id
-    if @item.save
+    if @item.save!
        @items = current_end_user.items.all
     else
       @item = Item.new
@@ -38,9 +38,21 @@ class Public::ItemsController < ApplicationController
     end
   end
 
+  def idownload
+    item = Item.find(params[:id]).content
+    data = item.download
+    if item.content_type.include?('image/')
+      send_data(data, type: 'image/', filename: 'download.jpg')
+    else
+      send_data(data, type: 'video/', filename: 'download.mp4')
+    end
+
+  end
+
+
   private
 
   def item_params
-    params.require(:item).permit(:end_user_id, :category_id, :genre_id, :name, :introduction, :contents_status, :content)
+    params.require(:item).permit(:end_user_id, :category_id, :genre_id, :name, :introduction, :price, :contents_status, :content)
   end
 end
