@@ -1,9 +1,9 @@
 class CreateItems < ActiveRecord::Migration[6.1]
   def change
     create_table :items, id: :integer do |t|
-      t.references :end_user, null: false, foreign_key: true
-      t.references :category, null: false, foreign_key: true
-      t.references :genre, null: false, foreign_key: true
+      t.integer :end_user_id, null: false, foreign_key: true
+      t.integer :category_id, null: false, foreign_key: true
+      t.integer :genre_id, null: false, foreign_key: true
       t.string :name
       t.text :introduction
       t.integer :price, null: false, default: "1000"

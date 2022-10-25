@@ -57,8 +57,6 @@ ActiveRecord::Schema.define(version: 2022_10_21_102723) do
     t.integer "end_user_id", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
-    t.index ["end_user_id"], name: "index_cart_items_on_end_user_id"
-    t.index ["item_id"], name: "index_cart_items_on_item_id"
   end
 
   create_table "categories", force: :cascade do |t|
@@ -86,8 +84,6 @@ ActiveRecord::Schema.define(version: 2022_10_21_102723) do
     t.integer "item_id", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
-    t.index ["end_user_id"], name: "index_favorites_on_end_user_id"
-    t.index ["item_id"], name: "index_favorites_on_item_id"
   end
 
   create_table "genres", force: :cascade do |t|
@@ -108,9 +104,6 @@ ActiveRecord::Schema.define(version: 2022_10_21_102723) do
     t.boolean "is_active", default: true, null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
-    t.index ["category_id"], name: "index_items_on_category_id"
-    t.index ["end_user_id"], name: "index_items_on_end_user_id"
-    t.index ["genre_id"], name: "index_items_on_genre_id"
   end
 
   create_table "order_details", force: :cascade do |t|
@@ -119,8 +112,6 @@ ActiveRecord::Schema.define(version: 2022_10_21_102723) do
     t.integer "price"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
-    t.index ["item_id"], name: "index_order_details_on_item_id"
-    t.index ["order_id"], name: "index_order_details_on_order_id"
   end
 
   create_table "orders", force: :cascade do |t|
@@ -129,19 +120,8 @@ ActiveRecord::Schema.define(version: 2022_10_21_102723) do
     t.integer "payment_method", default: 0, null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
-    t.index ["end_user_id"], name: "index_orders_on_end_user_id"
   end
 
   add_foreign_key "active_storage_attachments", "active_storage_blobs", column: "blob_id"
   add_foreign_key "active_storage_variant_records", "active_storage_blobs", column: "blob_id"
-  add_foreign_key "cart_items", "end_users"
-  add_foreign_key "cart_items", "items"
-  add_foreign_key "favorites", "end_users"
-  add_foreign_key "favorites", "items"
-  add_foreign_key "items", "categories"
-  add_foreign_key "items", "end_users"
-  add_foreign_key "items", "genres"
-  add_foreign_key "order_details", "items"
-  add_foreign_key "order_details", "orders"
-  add_foreign_key "orders", "end_users"
 end
