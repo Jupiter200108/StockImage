@@ -20,11 +20,11 @@
     <header class="col-md-12 d-flex justify-content-center border-bottom border-3 p-2" role="banner">
       <div class="align-items-center">
         <% if admin_signed_in? %>
-          <%= link_to admin_path do %>
+          <%= link_to admin_path,data: {"turbolinks"=>false} do %>
             <%= image_tag '/images/logo.png',size: "150x45" %>
           <% end %>
         <% else %>
-          <%= link_to root_path do %>
+          <%= link_to root_path,data: {"turbolinks"=>false} do %>
             <%= image_tag '/images/logo.png',size: "150x45" %>
           <% end %>
         <% end %>
@@ -33,9 +33,10 @@
     	<% if admin_signed_in? %>
     	  <div class="col-md-11 d-flex flex-wrap align-items-center">
     	    <div class="col-1 px-0 text-center"><%= link_to '商品一覧', admin_items_path,class: "btn btn-sm border border-3" %></div>
-    	    <div class="col-1 px-0 text-center"><%= link_to 'ユーザー一覧', admin_end_users_path,class: "btn btn-sm border border-3" %></div>
-    	    <div class="col-1 px-0 text-center"><%= link_to 'ジャンル一覧', admin_genres_path,class: "btn btn-sm border border-3" %></div>
-    	    <div class="col-1 px-0 text-center"><%= link_to 'カテゴリー一覧', admin_categories_path,class: "btn btn-sm border border-3" %></div>
+    	    <div class="col-1 px-0 text-center"><%= link_to 'ユーザー', admin_end_users_path,class: "btn btn-sm border border-3" %></div>
+    	    <div class="col-1 px-0 text-center"><%= link_to '注文履歴', admin_orders_path,class: "btn btn-sm border border-3" %></div>
+    	    <div class="col-1 px-0 text-center"><%= link_to 'ジャンル', admin_genres_path,class: "btn btn-sm border border-3" %></div>
+    	    <div class="col-1 px-0 text-center"><%= link_to 'カテゴリー', admin_categories_path,class: "btn btn-sm border border-3" %></div>
     	    <div class="col-1 px-0 text-center"><%= link_to 'ログアウト', destroy_admin_session_path, method: :delete,class: "btn btn-sm border border-3" %></div>
         </div>
     	<% elsif end_user_signed_in? %>

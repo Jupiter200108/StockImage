@@ -51,23 +51,29 @@
         <div class="col-8 align-top">1000円</div>
       </div>
     </div>
-    <% if current_end_user.present? %>
-      <% if @item.end_user_id == current_end_user.id %>
-        <div class="col-md-12 text-center mt-5"><%= link_to "編集する", edit_item_path(@item.id), class: "btn btn-sm btn-outline-success rounded-pill border border-3" %></div>
-      <% elsif current_end_user.ordered_items.ids.include?(@item.id) %>
-      <% else %>
-    <% end %>
-    <div class="col-md-12 text-center mt-5">
-      <%= form_with model: @cart_item, url: cart_items_path,  method: :post,multipart: true do |f| %>
-        <%=f.hidden_field :item_id, :value => @item.id %>
-        <!--ログインしていない場合-->
-        <% unless current_end_user.present? %>
-        <% else %>
-          <%=f.hidden_field :end_user_id, :value =>current_end_user.id %>
-        <%= f.submit "カートに追加" ,class: "btn btn-sm btn-outline-primary rounded-pill border border-3"%>
-        <% end %>
-      <% end %>
-    </div>
+
+    <% if @item.end_user_id == current_end_user.id %>
+     　 <div class="col-md-12 text-center mt-5"><%= link_to "編集する", edit_item_path(@item.id), class: "btn btn-sm btn-outline-success rounded-pill border border-3" %></div>
+    <% elsif current_end_user.ordered_items.ids.include?(@item.id) %>
+
+    <% else %>
+       <% if current_end_user.nil? %>
+
+       <% elsif current_end_user.cart_items.find_by(item_id: @item.id) %>
+       added
+       <%else%>
+             <div class="col-md-12 text-center mt-5">
+                <%= form_with model: @cart_item, url: cart_items_path,  method: :post,multipart: true do |f| %>
+                  <%=f.hidden_field :item_id, :value => @item.id %>
+                  <!--ログインしていない場合-->
+
+                    <%=f.hidden_field :end_user_id, :value =>current_end_user.id %>
+
+                  　<%= f.submit "カートに追加" ,class: "btn btn-sm btn-outline-primary rounded-pill border border-3"%>
+
+                <% end %>
+            </div>
+       <% end %>
     <% end %>
 
   </div>

@@ -15,6 +15,10 @@ class Item < ApplicationRecord
   validates :price, presence: true
   validates :is_active, inclusion: [true, false]
 
+  scope :search_by_category, -> category_name {
+    joins(:category).merge(Category.name_like category_name)
+  }
+
   def favorited_by?(end_user)
     favorites.where(end_user_id: end_user.id).exists?
   end
@@ -31,10 +35,8 @@ class Item < ApplicationRecord
     end
   end
 
-  def self.looks(search, word)
-    if search == "partial_match"
-      @item = Item.where("name LIKE?","%#{word}%")
-    end
+  def self.looks(word)
+    search_by_category(word).or(where("name LIKE?","%#{word}%"))
   end
 
 end
