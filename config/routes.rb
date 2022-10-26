@@ -34,6 +34,8 @@ Rails.application.routes.draw do
     resources :end_users,only:[:show, :edit, :create, :update]
     get '/end_users/:id/unsubscribe' => "end_users#unsubscribe", as: "unsubscribe"
     patch '/end_users/:id/withdrawal' => "end_users#withdrawal", as: "withdrawal"
+
+    get '/search', to: 'searches#search'
   end
 
   # 管理者用

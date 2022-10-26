@@ -31,7 +31,10 @@ class Item < ApplicationRecord
     end
   end
 
-  def self.search(word)
-    @item = Item.where("name LIKE?","%#{word}%")
+  def self.looks(search, word)
+    if search == "partial_match"
+      @item = Item.where("name LIKE?","%#{word}%")
+    end
   end
+
 end

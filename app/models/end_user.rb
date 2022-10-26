@@ -16,4 +16,5 @@ class EndUser < ApplicationRecord
   has_many :ordered_items, through: :order_details, source: :item
   has_many :items
   has_many :favorites, dependent: :destroy
+  
 end
