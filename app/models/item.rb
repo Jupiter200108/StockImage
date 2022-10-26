@@ -36,7 +36,7 @@ class Item < ApplicationRecord
   end
 
   def self.looks(word)
-    search_by_category(word).or(where("name LIKE?","%#{word}%"))
+    search_by_category(word).or(where("items.name LIKE?","%#{word}%"))
   end
 
 end

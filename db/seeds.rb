@@ -56,6 +56,21 @@ EndUser.create!(
  [
   {email: 'olivia@test.com', name: 'Olivia', password: 'Olivia123'},
   {email: 'james@test.com', name: 'James', password: 'James123'},
-  {email: 'lucas@test.com', name: 'Lucas', password: 'Lucas123'}
+  {email: 'lucas@test.com', name: 'Lucas', password: 'Lucas123'},
+  {email: 'Marianne@test.com', name: 'Marianne', password: 'Marianne123'},
+  {email: 'Nina@test.com', name: 'Nina', password: 'Nina123'},
+  {email: 'Hamilton@test.com', name: 'Hamilton', password: 'Hamilton123'},
+  {email: 'Pamela@test.com', name: 'Pamela', password: 'Pamela123'},
+  {email: 'Gilbert@test.com', name: 'Gilbert', password: 'Gilbert123'},
+  {email: 'Fred@test.com', name: 'Fred', password: 'Fred123'},
+  {email: 'Rose@test.com', name: 'Rose', password: 'Rose123'},
+  {email: 'Shirley@test.com', name: 'Shirley', password: 'Shirley123'},
+  {email: 'Elvis@test.com', name: 'Elvis', password: 'Elvis123'},
+  {email: 'Daniel@test.com', name: 'Daniel', password: 'Daniel123'},
+  {email: 'Cedric@test.com', name: 'Cedric', password: 'Cedric123'},
+  {email: 'Tammy@test.com', name: 'Tammy', password: 'Tammy123'},
+  {email: 'Brandon@test.com', name: 'Brandon	', password: 'Brandon123'},
+  {email: 'Vivian@test.com', name: 'Vivian', password: 'Vivian123'},
+  {email: 'Zoe@test.com', name: 'Zoe', password: 'Zoe123'},
  ]
 )

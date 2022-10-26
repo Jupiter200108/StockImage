@@ -52,28 +52,30 @@
       </div>
     </div>
 
-    <% if @item.end_user_id == current_end_user.id %>
-     　 <div class="col-md-12 text-center mt-5"><%= link_to "編集する", edit_item_path(@item.id), class: "btn btn-sm btn-outline-success rounded-pill border border-3" %></div>
+    <!--ユーザーがログインしていない場合-->
+    <% if current_end_user.nil? %>
+      <div class="col-md-12 text-center mt-5"><%= link_to "カート追加", new_end_user_session_path, class: "btn btn-sm btn-outline-danger rounded-pill border border-3" %></div>
+    <!--アイテムがログインユーザーの投稿した物である場合-->
+    <% elsif @item.end_user_id == current_end_user.id %>
+      <div class="col-md-12 text-center mt-5"><%= link_to "編集する", edit_item_path(@item.id), class: "btn btn-sm btn-outline-success rounded-pill border border-3" %></div>
+    <!--アイテムが既に購入済みのものである場合-->
     <% elsif current_end_user.ordered_items.ids.include?(@item.id) %>
-
+      <div class="col-md-12 text-center mt-5"><%= link_to "購入済", items_path, class: "btn btn-sm btn-outline-secondary rounded-pill border border-3" %></div>
+    <!--それ以外の場合-->
     <% else %>
-       <% if current_end_user.nil? %>
-
-       <% elsif current_end_user.cart_items.find_by(item_id: @item.id) %>
-       added
-       <%else%>
-             <div class="col-md-12 text-center mt-5">
-                <%= form_with model: @cart_item, url: cart_items_path,  method: :post,multipart: true do |f| %>
-                  <%=f.hidden_field :item_id, :value => @item.id %>
-                  <!--ログインしていない場合-->
-
-                    <%=f.hidden_field :end_user_id, :value =>current_end_user.id %>
-
-                  　<%= f.submit "カートに追加" ,class: "btn btn-sm btn-outline-primary rounded-pill border border-3"%>
-
-                <% end %>
-            </div>
-       <% end %>
+      <!--アイテムが既にカート内に存在する場合-->
+      <% if current_end_user.cart_items.find_by(item_id: @item.id) %>
+        <div class="col-md-12 text-center mt-5"><%= link_to "カート追加済", cart_items_path, class: "btn btn-sm btn-outline-secondary rounded-pill border border-3" %></div>
+      <!--それ以外の場合-->
+      <%else%>
+        <div class="col-md-12 text-center mt-5">
+          <%= form_with model: @cart_item, url: cart_items_path,  method: :post,multipart: true do |f| %>
+            <%=f.hidden_field :item_id, :value => @item.id %>
+            <%=f.hidden_field :end_user_id, :value =>current_end_user.id %>
+            <%= f.submit "カート追加" ,class: "btn btn-sm btn-outline-primary rounded-pill border border-3"%>
+          <% end %>
+        </div>
+      <% end %>
     <% end %>
 
   </div>
