@@ -13,7 +13,7 @@ class Public::OrdersController < ApplicationController
   end
 
   def index
-    @orders = Order.page(params[:page]).per(10)
+    @orders = current_end_user.order.page(params[:page]).per(10)
   end
 
   def show

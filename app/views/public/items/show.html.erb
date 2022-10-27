@@ -50,6 +50,11 @@
         <div class="col-4 align-top">価格</div>
         <div class="col-8 align-top">1000円</div>
       </div>
+      <div class="row col-12 mb-2">
+        <% @item.tags.each do |tag| %>
+          <span class="label"><%= tag.name %></span>
+        <% end %>
+      </div>
     </div>
 
     <!--ユーザーがログインしていない場合-->

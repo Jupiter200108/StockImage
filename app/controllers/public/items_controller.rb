@@ -9,8 +9,12 @@ class Public::ItemsController < ApplicationController
   def create
     @item = Item.new(item_params)
     @item.end_user_id = current_end_user.id
-    if @item.save!
-       @items = current_end_user.items.all
+    if @item.save
+      tags = Vision.get_image_data(@item.content)
+      tags.each do |tag|
+        @item.tags.create(name: tag)
+      end
+      @items = current_end_user.items.all
     else
       @item = Item.new
       render :new
