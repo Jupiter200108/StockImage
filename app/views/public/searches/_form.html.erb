@@ -1,6 +1,6 @@
 <%= form_with url: search_path, method: :get, local: true do |f| %>
-  <div class="input-group input-lg mb-3">
-    <%= f.text_field :word,class: "form-control button-addon2",placeholder: "Recipient's username" %>
+  <div class="input-group input-lg input-group-lg mb-3">
+    <%= f.text_field :word,class: "form-control button-addon2",placeholder: "画像・動画を探す" %>
     <%= f.hidden_field :model, value: "Item"  %>
     <%= f.hidden_field :search, value: "partial_match" %>
     <div class="input-group-append">

@@ -1,9 +1,9 @@
 <div class="container mt-5">
-<div class="row mb-5">
+<div class="row col-12 mb-5 mx-0 justify-content-center justify-content-lg-start">
   <h3>商品詳細</h3>
 </div>
 
-  <div class="row col-12 col-xl-11 justify-content-center shadow-lg px-4 py-5">
+  <div class="row col-12 col-xl-11 justify-content-center shadow-lg px-4 py-5 mx-auto">
 
     <div class="col-md-12 col-lg-6 d-flex justify-content-center s-400">
       <%= render "public/items/content", item: @item %>
@@ -26,6 +26,12 @@
           <% end %>
         </div>
       </div>
+
+      <div class="row col-12 mb-2">
+        <div class="col-4 align-top">ID</div>
+        <div class="col-8 align-top"><%= @item.id %></div>
+      </div>
+
       <div class="row col-12 mb-2">
         <div class="col-4 align-top">タイトル</div>
         <div class="col-8 align-top"><%= @item.name %></div>
@@ -51,9 +57,12 @@
         <div class="col-8 align-top">1000円</div>
       </div>
       <div class="row col-12 mb-2">
+        <div class="col-4">タグ</div>
+        <div class="col-8 dflex flex-wrap aline-center">
         <% @item.tags.each do |tag| %>
-          <span class="label"><%= tag.name %></span>
+          <span class="badge badge-pill badge-info mx-1"><%= tag.name %></span>
         <% end %>
+        </div>
       </div>
     </div>
 

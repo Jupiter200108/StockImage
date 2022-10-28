@@ -16,9 +16,11 @@ class Item < ApplicationRecord
   validates :price, presence: true
   validates :is_active, inclusion: [true, false]
 
-  scope :search_by_category, -> category_name {
-    joins(:category).merge(Category.name_like category_name)
-  }
+  scope :search_by_category, ->  do
+    joins(:category)
+    .joins(:tags)
+    .joins(:genre)
+  end
 
   def favorited_by?(end_user)
     favorites.where(end_user_id: end_user.id).exists?
@@ -37,7 +39,10 @@ class Item < ApplicationRecord
   end
 
   def self.looks(word)
-    search_by_category(word).or(where("items.name LIKE?","%#{word}%"))
+    Item.search_by_category.merge(Tag.name_like word).or(
+      Item.search_by_category.merge(Category.name_like word)).or(
+        Item.search_by_category.merge(Genre.name_like word)).or(
+          where("items.name LIKE?","%#{word}%")).distinct
   end
 
 end

@@ -1,0 +1,9 @@
+<div class="dropdown-menu py-0">
+  <% genres.each do |genre| %>
+    <div class="dropdown-item d-flex flex-wrap py-1 px-1" >
+      <%= link_to genre_path(genre.id),class: "text-dark text-decoration-none align-center" do %>
+      <div class="h6 my-auto"><%= genre.name %></div>
+      <% end %>
+    </div>
+  <% end %>
+</div>

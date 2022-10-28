@@ -1,8 +1,31 @@
 @import '~bootstrap/scss/bootstrap';
 
-@media screen and (min-width: 768px) {
+@media screen and (min-width: 1200px) {
   #container {
     height: 600px;
+    #theTarget {
+      .image1 {
+        background-image: url("/images/image1.jpg");
+      }
+      .image2 {
+        background-image: url("/images/image2.jpg");
+      }
+      .image3 {
+        background-image: url("/images/image3.jpg");
+      }
+      .image4 {
+        background-image: url("/images/image4.jpg");
+      }
+      .image5 {
+        background-image: url("/images/image5.jpg");
+      }
+    }
+  }
+}
+
+@media screen and (max-width: 1200px) {
+  #container {
+    height: 400px;
     #theTarget {
       .image1 {
         background-image: url("/images/image1.jpg");
@@ -69,15 +92,76 @@
 }
 
 // 画像・動画一覧の並べ方
-a {
-  flex-grow: 1;
-  margin: 0.2rem;
+@media screen and (min-width: 1458px) {
+  a {
+    flex-grow: 1;
+    flex: flex-center;
+    margin: 0.2rem;
+    max-width: 600px;
+    .f-img {
+      object-fit: cover;
+      height: 250px;
+      width: 100%;
+      border-radius: 4px;
+    }
+  }
+}
 
-  .f-img {
-    object-fit: cover;
-    height: 250px;
-    width: 100%;
-    border-radius: 4px;
+@media screen and (max-width: 1458px) {
+  a {
+    flex-grow: 1;
+    margin: 0.2rem;
+    max-width: 400px;
+    .f-img {
+      object-fit: cover;
+      height: 160px;
+      width: 100%;
+      border-radius: 4px;
+    }
+  }
+}
+
+@media screen and (max-width: 1311px) {
+  a {
+    flex-grow: 1;
+    margin: 0.2rem;
+    max-width: 350px;
+    .f-img {
+      object-fit: cover;
+      height: 145px;
+      width: 100%;
+      border-radius: 4px;
+    }
+  }
+}
+
+@media screen and (max-width: 768px) {
+  a {
+    flex-grow: 1;
+    margin: 0.2rem;
+    max-width: 50vw;
+
+    .f-img {
+      object-fit: cover;
+      height: 120px;
+      width: 100%;
+      border-radius: 4px;
+    }
+  }
+}
+
+@media screen and (max-width: 576px) {
+  a {
+    flex-grow: 1;
+    margin: 0.2rem;
+    max-width: 100vw;
+
+    .f-img {
+      object-fit: cover;
+      height: 40vw;
+      // width: 100%;
+      border-radius: 4px;
+    }
   }
 }
 // 画像・動画一覧の最後の空白を埋める
@@ -108,14 +192,6 @@ a {
 }
 
 
-
-// レスポンシブのボーダーの調整
-// @media screen and (min-width: 768px) {
-//   .border-md-right {
-//     border-right: 1px solid #dee2e6 !important;
-//   }
-// }
-
 .text-short {
   overflow: hidden;
   text-overflow: ellipsis;
@@ -123,18 +199,27 @@ a {
 }
 
 
-.s-60 {
-
-    .size {
-      height: 60px;
-    }
-
+.s-70 {
+  .size {
+    max-height: 70px;
+  }
 }
 
 .s-400 {
+  .size {
+    max-height: 400px;
+  }
+}
 
-    .size {
-      height: 400px;
-    }
+.navbar-light .navbar-toggler {
+    border-color: rgba(0,0,0,0);
+}
 
+footer {
+  margin-top: auto;
+  padding: 150px 0;
+  margin-top: 150px;
+  background: black;
+  color: #fff;
+  text-align: center;
 }

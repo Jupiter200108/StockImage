@@ -3,7 +3,7 @@ class Public::ItemsController < ApplicationController
 
   def new
     @item = Item.new
-    @items = current_end_user.items.all
+    @items = current_end_user.items.all.page(params[:page]).per(12)
   end
 
   def create
@@ -27,11 +27,13 @@ class Public::ItemsController < ApplicationController
   end
 
   def index
-    @items = Item.page(params[:page]).per(80)
+    @items = Item.where(is_active: true).page(params[:page]).per(50)
   end
 
   def edit
+
     @item = Item.find(params[:id])
+     require_permission(@item)
   end
 
   def update
@@ -61,4 +63,11 @@ class Public::ItemsController < ApplicationController
   def item_params
     params.require(:item).permit(:end_user_id, :category_id, :genre_id, :name, :introduction, :price, :contents_status, :content, :is_active)
   end
+
+  def require_permission(item)
+    unless item.end_user == current_end_user
+      redirect_to root_path, alert: 'ここから先は管理者限定です！'
+    end
+  end
+
 end

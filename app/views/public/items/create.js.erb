@@ -2,5 +2,5 @@ $('.item-new').html("<%= j(render 'public/items/btn', item: @item, items: @items
 $("#item_content").val("");
 $("#item_name").val("");
 $("#item_introduction").val("");
-$("#item_genre_id").val("");
-$("#item_category_id").val("");
+document.getElementById('item_genre_id').insertAdjacentHTML("afterbegin","<option value selected>選択してください</option>")
+document.getElementById('item_category_id').insertAdjacentHTML("afterbegin","<option value selected>選択してください</option>")

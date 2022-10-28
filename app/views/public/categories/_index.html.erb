@@ -1,0 +1,12 @@
+<li class="nav-item dropdown">
+  <a class="nav-link dropdown-toggle border rounded-lg bg-light text-dark py-1 px-1" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">カテゴリー</a>
+  <div class="dropdown-menu py-0">
+    <% categories.each do |category| %>
+      <div class="dropdown-item d-flex flex-wrap px-1" >
+        <%= link_to category_path(category.id),class: "text-dark text-decoration-none" do %>
+        <div class="h6 my-auto"><%= category.name %></div>
+        <% end %>
+      </div>
+    <% end %>
+  </div>
+</li>
