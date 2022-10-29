@@ -4,7 +4,7 @@
       <% if item.content.content_type.include?('image/')%>
         <%= image_tag item.content,class:"card-img-top image-fluid f-img" %>
       <% else %>
-        <%= video_tag rails_blob_path(item.content), class: "card-img-top image-fluid f-img",controls: true %>
+        <%= video_tag rails_blob_path(item.content), class: "card-img-top image-fluid f-img" %>
       <% end %>
     <% end %>
   <% end %>

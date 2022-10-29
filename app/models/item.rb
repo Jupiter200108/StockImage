@@ -9,8 +9,8 @@ class Item < ApplicationRecord
   has_many :tags, dependent: :destroy
 
   validates :content, presence: true
-  validates :name, presence: true
-  validates :introduction, presence: true
+  validates :name, presence: true,length: { in: 1..15 }
+  validates :introduction, presence: true,length: { in: 1..75 }
   validates :genre_id, presence: true
   validates :category_id, presence: true
   validates :price, presence: true

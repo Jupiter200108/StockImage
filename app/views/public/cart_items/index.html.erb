@@ -23,15 +23,9 @@
 
       <% @cart_items.each do |cart_item| %>
         <div class="col-md-10">
-          <div class="col-md-12 d-flex border border-3 rounded-lg my-2 py-2 px-2">
-            <div class="col-4 shadow px-0">
-              <% if cart_item.item.content.present?%>
-                <% if cart_item.item.content.content_type.include?('image/')%>
-                  <%= image_tag cart_item.item.content,class:"card-img-top image-fluid",size: "100" %>
-                <% else %>
-                  <%= video_tag rails_blob_path(cart_item.item.content), class: "card-img-top image-fluid",controls: true,size: "100" %>
-                <% end%>
-              <% end %>
+          <div class="col-md-12 d-flex align-items-center border border-3 rounded-lg my-2 py-2 px-2">
+            <div class="col-4 px-0 s-100">
+              <%= render 'public/items/content', item: cart_item.item %>
             </div>
             <div class="col-8">
               <div class="d-flex justify-content-between">

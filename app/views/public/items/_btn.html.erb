@@ -5,10 +5,10 @@
     <div class="col-8 align-top"><%= f.file_field :content, accept: "image/*", class: "col-12 px-0" %></div>
 
     <div class="col-4 align-top"><%= f.label :name,"タイトル" %></div>
-    <div class="col-8 align-top"><%= f.text_field :name, class: "col-12 px-1" %></div>
+    <div class="col-8 align-top"><%= f.text_field :name,placeholder: '1〜１５字にしてください',maxlength: 15, class: "col-12 px-1" %></div>
 
     <div class="col-4 align-top"><%= f.label :introduction,"説明" %></div>
-    <div class="col-8 align-top"><%= f.text_area :introduction, class: "col-12 px-1",rows: "7" %></div>
+    <div class="col-8 align-top"><%= f.text_area :introduction,placeholder: '1〜７５字にしてください',maxlength: 75, class: "col-12 px-1",rows: "7" %></div>
 
     <div class="col-4 align-top"><%= f.label :genre_id,"ジャンル" %></div>
     <div class="col-8 align-top"><%= f.select :genre_id, options_from_collection_for_select(Genre.all, :id, :name), {prompt: "選択してください"}, class: "form-control-sm col-12 px-1" %></div>
@@ -22,26 +22,26 @@
 
     <%= f.hidden_field :price %>
 
-    <div class="col-12 text-center mt-4 mx-auto"><%= f.submit "新規登録", class: "btn btn-sm btn-outline-success text-center rounded-pill border border-3",data: { disabled_with: 'ボタン押下後の文言' } %></div>
+    <div class="col-12 text-center mt-4 mx-auto"><%= f.submit "新規登録", class: "btn btn-sm btn-outline-success text-center rounded-pill border border-3" %></div>
   </div>
     <% end %>
 </div>
 <div class="col-xl-8">
-  <div class="d-flex flex-wrap py-1">
+  <div class="d-flex flex-wrap">
     <% items.each do |item| %>
-        <div class="col-6 col-md-4 col-lg-4 px-0">
-          <div class="border border-3 rounded-lg px-2 py-2 mx-1 my-1">
-            <%= link_to item_path(item.id), class: 'row text-dark text-decoration-none mx-0' do %>
-              <div class="col-6 col-sm-5 col-md-6 px-0 s-70">
-                <%= render "public/items/content", item: item %>
-              </div>
-              <div class="col-6 col-sm-7 col-md-6">
-                <div class="text-black-50 py-1">ID:<%=item.id %></div>
-                <div class="pb-1 text-short"><%=item.name %></div>
-              </div>
-            <% end %>
-          </div>
+      <div class="col-6 col-md-4 col-lg-4 px-0 my-1">
+        <div class="border border-3 rounded-lg d-flex align-items-center px-2 mx-1 my-1 h-100">
+          <%= link_to item_path(item.id), class: 'row col-12 text-dark text-decoration-none mx-0 px-0' do %>
+            <div class="col-6 col-sm-5 col-md-6 px-0 s-100">
+              <%= render "public/items/content", item: item %>
+            </div>
+            <div class="col-6 col-sm-7 col-md-6">
+              <div class="text-black-50 py-1">ID:<%=item.id %></div>
+              <div class="pb-1 text-short"><%=item.name %></div>
+            </div>
+          <% end %>
         </div>
+      </div>
     <% end %>
   </div>
   <div class="my-3"><%= paginate items %></div>

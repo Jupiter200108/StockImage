@@ -3,18 +3,21 @@ class Public::ItemsController < ApplicationController
 
   def new
     @item = Item.new
-    @items = current_end_user.items.all.page(params[:page]).per(12)
+    @items = current_end_user.items.order("created_at DESC").page(params[:page]).per(12)
   end
 
   def create
     @item = Item.new(item_params)
     @item.end_user_id = current_end_user.id
     if @item.save
-      tags = Vision.get_image_data(@item.content)
-      tags.each do |tag|
-        @item.tags.create(name: tag)
+      if @item.content.content_type.include?('image/')
+        tags = Vision.get_image_data(@item.content)
+        tags.each do |tag|
+          @item.tags.create(name: tag)
+        end
       end
-      @items = current_end_user.items.all
+
+      @items = current_end_user.items.order("created_at DESC").page(params[:page]).per(12)
     else
       @item = Item.new
       render :new

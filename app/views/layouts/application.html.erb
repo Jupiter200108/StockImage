@@ -121,25 +121,29 @@
           <div class="collapse navbar-collapse order-lg-0" id="navbarNavAltMarkup">
             <ul class="navbar-nav">
               <li class="nav-item nav-link">
-               <%= link_to items_path,class: "text-decoration-none" do %>
-                <i class="fas fa-door-open text-dark mr-1"></i><span class = "mr-3 text-dark">商品一覧</span>
-               <% end %>
+                <%= link_to items_path,class: "text-decoration-none" do %>
+                  <i class="fa-solid fa-indent text-dark mr-1"></i><span class = "mr-3 text-dark">商品一覧</span>
+                <% end %>
               </li>
             </ul>
             <div class="navbar-nav">
               <li class="nav-item dropdown">
-                <a class="nav-link dropdown-toggle border rounded-lg bg-light text-dark py-1 px-1" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">画像</a>
+                <a class="nav-link dropdown-toggle border rounded-lg bg-light text-dark py-1 px-1" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">
+                  <i class="fa-regular fa-image mr-1"></i>画像
+                </a>
                 <%= render 'public/genres/index', genres: @image_genres %>
               </li>
             </div>
             <div class="navbar-nav">
               <li class="nav-item dropdown">
-                <a class="nav-link dropdown-toggle border rounded-lg bg-light text-dark py-1 px-1" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">動画</a>
+                <a class="nav-link dropdown-toggle border rounded-lg bg-light text-dark py-1 px-1" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">
+                  <i class="fa-solid fa-film mr-1"></i>動画
+                </a>
                 <%= render 'public/genres/index', genres: @video_genres %>
               </li>
             </div>
             <div class="navbar-nav">
-                <%= render 'public/categories/index', categories: @categories %>
+              <%= render 'public/categories/index', categories: @categories %>
             </div>
           </div>
         <% else %>
@@ -166,13 +170,17 @@
             </ul>
             <div class="navbar-nav">
               <li class="nav-item dropdown">
-                <a class="nav-link dropdown-toggle border rounded-lg bg-light text-dark py-1 px-1" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">画像</a>
+                <a class="nav-link dropdown-toggle border rounded-lg bg-light text-dark py-1 px-1" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">
+                  <i class="fa-regular fa-image mr-1"></i>画像
+                </a>
                 <%= render 'public/genres/index', genres: @image_genres %>
               </li>
             </div>
             <div class="navbar-nav">
               <li class="nav-item dropdown">
-                <a class="nav-link dropdown-toggle border rounded-lg bg-light text-dark py-1 px-1" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">動画</a>
+                <a class="nav-link dropdown-toggle border rounded-lg bg-light text-dark py-1 px-1" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">
+                  <i class="fa-solid fa-film mr-1"></i>動画
+                </a>
                 <%= render 'public/genres/index', genres: @video_genres %>
               </li>
             </div>
@@ -197,7 +205,9 @@
     <main role="main">
       <%= yield %>
     </main>
-    <footer></footer>
+    <footer>
+      <div class="h2">@StockImage</div>
+    </footer>
   </body>
   <script>
     $(document).ready(function() {
