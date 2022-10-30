@@ -17,7 +17,7 @@
   <div class="row flex-wrap mb-5 pb-5">
     <% @genres.each do |genre| %>
     <div class="col-4 col-lg">
-      <%= link_to genre_path(genre.id),class: "btn btn-light rounded-pill text-dark text-decoration-none align-center mx-3" do %>
+      <%= link_to genre_path(genre.id),class: "btn btn-light rounded-pill text-dark text-decoration-none align-center px-2" do %>
         <div class="text-center">
         <%= genre.name %>
         </div>
@@ -29,10 +29,10 @@
     <div class="line-images">
       <% @items.each do |item| %>
         <div class="line-image">
-          <%= link_to item_path(item.id) do %>
+          <%= link_to item_path(item.id),class: "mx-0" do %>
             <% if item.content.present?%>
               <% if item.content.content_type.include?('image/')%>
-                <%= image_tag item.content,class:"card-img-top image-fluid f-img" %>
+                <%= image_tag item.content,class: "card-img-top image-fluid f-img" %>
               <% end %>
             <% end %>
           <% end %>

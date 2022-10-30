@@ -1,29 +1,20 @@
-<div class="container">
-  <div class="row">
-    <div class="col-12 px-0 mx-auto">
-      <div class="d-flex bd-highlight mb-3">
-       <h4><strong><%= @end_user.name %>さんの注文履歴一覧</strong></h4>
-     </div>
-<table class="table border">
-  <thead>
-    <tr>
-      <th class="table-active table-dark">購入日時</th>
-      <th class="table-active table-dark">購入者</th>
-    </tr>
-  </thead>
-  <tbody>
-    <% @end_userorders.each do |order| %>
-    <tr>
-      <td>
-        <%= link_to admin_order_path(order) do %>
-          <%= order.created_at.strftime("%Y-%m-%d %H:%M:%S") %>
-        <% end %>
-      </td>
-      <td><%= order.end_user.name %></td>
-    </tr>
-    <% end %>
-   </tbody>
-  </table>
+<div class ="container">
+  <div class ="row col-lg-8 d-flex justify-content-between mb-5 mt-5 mx-auto">
+    <h3><%= @end_user.name %>さんの注文履歴一覧</h3>
   </div>
- </div>
+  <div class ="row col-lg-8 bg-secondary text-white py-3 mx-auto">
+    <div class="col-12 d-flex px-0">
+      <div class="col-6 pr-0">購入日時</div>
+      <div class="col-6 pr-0">購入者</div>
+    </div>
+  </div>
+  <% @end_userorders.each do |order| %>
+    <%= link_to  admin_order_path(order), class: "col-12 col-lg-8 d-flex text-dark text-decoration-none px-0 my-0 mx-auto" do %>
+      <div class="row col-12 border border-top-0 py-3 px-0 mx-0">
+        <div class="col-6 pr-0"><%= order.created_at.strftime("%Y-%m-%d %H:%M:%S") %></div>
+        <div class="col-6 pr-0"><%= order.end_user.name %></div>
+      </div>
+    <% end %>
+  <% end %>
+  <div class="my-3"><%= paginate @end_userorders %></div>
 </div>

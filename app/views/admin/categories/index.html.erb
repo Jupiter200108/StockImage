@@ -1,13 +1,13 @@
 <div class="container">
-  <div class = "row col-md-12 my-5 mx-0">
-    <div class = "col-xl-5">
+  <div class = "row col-md-12 my-5 mx-0 px-0">
+    <div class = "col-md-6 col-xl-5">
       <div class="col-md-12 border rounded-lg py-4 px-2 my-1">
         <div class="text-center py-4">
           <h3>カテゴリー一覧・追加</h3>
         </div>
         <%= form_with model: @category,url: admin_categories_path,method: :post do |f| %>
           <div class="row col-md-12 mx-0">
-            <div class="col-5"><%= f.label :name,"カテゴリー名" %></div>
+            <div class="col-5 pl-0"><%= f.label :name,"カテゴリー名" %></div>
             <div class="col-7 px-0"><%= f.text_field :name, class: "col-12 px-1" %></div>
           </div>
 
@@ -18,7 +18,7 @@
       </div>
     </div>
 
-    <div class = "col-xl-7">
+    <div class = "col-md-6 col-xl-7">
       <div class = "col-md-12 border border-dark px-0 my-1">
         <div class="col-md-12 bg-secondary text-white text-center py-2">
           カテゴリー
@@ -26,8 +26,8 @@
         <div class="row mx-0 px-0">
           <% @categories.each do |category| %>
           <div class="row col-6 mx-0 py-2 px-0 border-bottom align-items-center">
-            <div class="col-8 pr-0 text-short"><%= category.name %></div>
-            <div class="col-4 px-0">
+            <div class="col-6 col-lg-8 pr-0 text-short"><%= category.name %></div>
+            <div class="col-6 col-lg-4 px-0">
               <%= link_to "編集",edit_admin_category_path(category.id), class: "btn btn-sm btn-outline-success rounded-pill" %>
             </div>
           </div>

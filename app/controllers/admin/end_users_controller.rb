@@ -1,6 +1,6 @@
 class Admin::EndUsersController < ApplicationController
   before_action :authenticate_admin!
-  
+
   def index
     @end_users = EndUser.page(params[:page]).per(15)
   end
@@ -25,9 +25,7 @@ class Admin::EndUsersController < ApplicationController
   def search_order
     @genres = Genre.all
     @end_user = EndUser.find(params[:id])
-    @end_userorders = Order.where(end_user_id: @end_user.id)
-    # @search = Item.ransack(params[:q])
-    # @items = @search.result
+    @end_userorders = Order.where(end_user_id: @end_user.id).page(params[:page]).per(15)
   end
 
   private

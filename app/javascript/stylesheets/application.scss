@@ -164,6 +164,7 @@
     }
   }
 }
+
 // 画像・動画一覧の最後の空白を埋める
 .f-end {
   flex-grow: 10000000 ;
@@ -180,7 +181,7 @@
 }
 
 .btn-outline-primary {
-    color: #007bff;
+  color: #007bff;
 }
 
 .bg-l {
@@ -215,7 +216,7 @@
 }
 
 footer {
-  margin-top: 15vw;
+  margin-top: 20vw;
   padding: 10vw;
   background: black;
   color: #fff;
@@ -224,15 +225,14 @@ footer {
 
 .line-images {
   margin: 0 auto;
-  padding: 5px;
+  padding: 5px 0;
   width: 100%;
   column-count: 3;
   column-gap: 0;
 }
 
 .line-image {
-  margin: 16px;
-  margin-top: 0;
+  margin: 0 7px 15px;
   -webkit-column-break-inside: avoid;
   page-break-inside: avoid;
   break-inside: avoid;
@@ -240,4 +240,19 @@ footer {
   object-fit: cover;
   box-shadow: 8px 12px 10px -6px rgba(0, 0, 0, 0.3);
   display: inline-block;
+}
+
+// thanksページのロゴのサイズ調整
+@media screen and (min-width: 600px) {
+  .thanks-img {
+    height: auto;
+    width: 500px;
+  }
+}
+
+@media screen and (max-width: 600px) {
+  .thanks-img {
+    height: auto;
+    width: 370px;
+  }
 }

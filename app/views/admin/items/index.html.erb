@@ -1,8 +1,8 @@
 <div class ="container">
-  <div class ="row d-flex justify-content-between mb-5 mt-5">
+  <div class ="row d-flex justify-content-between mb-5 mt-5 mx-0">
     <h3>商品一覧</h3><%= paginate @items %>
   </div>
-  <div class ="row bg-secondary text-white py-2">
+  <div class ="row bg-secondary text-white py-2 mx-0">
     <div class="col-12 d-flex">
     <div class="col-2">商品ID</div>
     <div class="col-2">投稿者</div>
@@ -13,7 +13,7 @@
     </div>
   </div>
   <% @items.each do |item| %>
-    <div class="row border border-top-0  py-2">
+    <div class="row border border-top-0 py-2 mx-0">
       <%= link_to admin_item_path(item.id), class: "col-12 d-flex text-dark text-decoration-none" do %>
         <div class="col-2">ID:<%= item.id %></div>
         <div class="col-2"><%= item.end_user.name %> [id:<%= item.end_user.id %>]</div>

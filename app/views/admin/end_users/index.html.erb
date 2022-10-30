@@ -1,22 +1,22 @@
 <div class ="container">
-  <div class ="row d-flex justify-content-between mb-5 mt-5">
+  <div class ="row col-lg-10 d-flex justify-content-between mb-5 mt-5 mx-auto">
     <h3>会員一覧</h3><%= paginate @end_users %>
   </div>
-  <div class ="row bg-secondary text-white py-3">
-    <div class="col-12 d-flex">
-    <div class="col-3">ID</div>
-    <div class="col-3">氏名</div>
-    <div class="col-3">メールアドレス</div>
-    <div class="col-3">ステータス</div>
+  <div class ="row col-lg-10 bg-secondary text-white py-3 mx-auto">
+    <div class="col-12 d-flex px-0">
+      <div class="col-1 pr-0">ID</div>
+      <div class="col-3 pr-0">氏名</div>
+      <div class="col-4 pr-0">メールアドレス</div>
+      <div class="col-4 pr-0">ステータス</div>
     </div>
   </div>
   <% @end_users.each do |end_user| %>
-    <div class="row border border-top-0  py-3">
-      <%= link_to admin_end_user_path(end_user), class: "col-12 d-flex text-dark text-decoration-none" do %>
-        <div class="col-3 text-short"><%= end_user.id %></div>
-        <div class="col-3"><%= end_user.name %> </div>
-        <div class="col-3"><%= end_user.email %></div>
-        <div class="col-3">
+    <div class="row col-lg-10 border border-top-0 py-3 mx-auto">
+      <%= link_to admin_end_user_path(end_user), class: "col-12 d-flex text-dark text-decoration-none px-0" do %>
+        <div class="col-1 pr-0 text-short"><%= end_user.id %></div>
+        <div class="col-3 pr-0"><%= end_user.name %> </div>
+        <div class="col-4 pr-0"><%= end_user.email %></div>
+        <div class="col-4 pr-0">
           <% if end_user.is_deleted == false %>
             <span class="text-success">有効</span>
           <% else %>

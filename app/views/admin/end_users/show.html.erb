@@ -1,37 +1,31 @@
 <div class="container">
-  <div class="mb-4 mt-5">
-    <h3><%= @end_user.name %>さんの会員詳細</h3>
+  <div class ="row col-12 col-lg-6 mx-auto">
+    <div class="mb-4 mt-5">
+      <h3><%= @end_user.name %>さんの会員詳細</h3>
+    </div>
   </div>
 
-  <div class ="row col-12">
-    <table class="col-8 table table-bordered">
-      <tbody>
-        <tr>
-          <td class ="table-dark pl-4" style="width: 30%">ID</td>
-          <td style="width: 70"%><%= @end_user.id %></td>
-        </tr>
-        <tr>
-          <td class ="table-dark pl-4">氏名</td>
-          <td><%= @end_user.name %></td>
-        </tr>
+  <div class ="row col-12 col-lg-6 mx-auto">
+    <div class ="col-6 bg-secondary border-bottom text-white py-2">ID</div>
+    <div class ="col-6 border border-left-0 py-2"><%= @end_user.id %></div>
 
-        <tr>
-          <td class ="table-dark pl-4">メールアドレス</td>
-          <td><%= @end_user.email %></td>
-        </tr>
-        <tr>
-          <td class ="table-dark pl-4">会員ステータス</td>
-          <td>
-            <% if @end_user.is_deleted == false %>
-              <span class="text-success">有効</span>
-            <% else %>
-              <span class=text-secondary>退会</span>
-            <% end %>
-          </td>
-        </tr>
-      </tbody>
-    </table>
+    <div class ="col-6 bg-secondary border-bottom text-white py-2">氏名</div>
+    <div  class ="col-6 border-right border-bottom py-2"><%= @end_user.name %></div>
+
+    <div class ="col-6  bg-secondary border-bottom text-white py-2">メールアドレス</div>
+    <div  class ="col-6 border-right border-bottom py-2"><%= @end_user.email %></div>
+
+    <div class ="col-6  bg-secondary text-white py-2">会員ステータス</div>
+    <div  class ="col-6 border-right border-bottom py-2">
+      <% if @end_user.is_deleted == false %>
+        <span class="text-success">有効</span>
+      <% else %>
+        <span class=text-secondary>退会</span>
+      <% end %>
+    </div>
   </div>
-    <%= link_to "編集", edit_admin_end_user_path(@end_user.id), class: 'btn btn-outline-success mr-3' %>
-    <%= link_to "注文履歴一覧", admin_end_user_search_order_path(@end_user.id), class: 'btn btn-outline-primary' %>
+  <div class ="row col-12 col-lg-6 mx-auto py-2 justify-content-between">
+    <div class="col-5 col-md-3"><%= link_to "編集", edit_admin_end_user_path(@end_user.id), class: 'btn btn-outline-success mr-3' %></div>
+    <div class="col-7 col-md-5"><%= link_to "注文履歴一覧", admin_end_user_search_order_path(@end_user.id), class: 'btn btn-outline-primary' %></div>
+  </div>
 </div>

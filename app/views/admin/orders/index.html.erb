@@ -1,32 +1,20 @@
-<div class="container">
-  <div class="row px-0">
-    <div class="mt-5 mb-4">
-      <h3>注文履歴一覧</h3>
+<div class ="container">
+  <div class ="row col-lg-8 d-flex justify-content-between mb-5 mt-5 mx-auto">
+    <h3>注文履歴一覧</h3>
+  </div>
+  <div class ="row col-lg-8 bg-secondary text-white py-3 mx-auto">
+    <div class="col-12 d-flex px-0">
+      <div class="col-6 pr-0">購入日時</div>
+      <div class="col-6 pr-0">購入者</div>
     </div>
   </div>
-
-  <div class="row col-12 px-0">
-    <table class= "table">
-      <tr>
-        <td class= "col-3 px-0 py-2 pl-1 table-dark">購入時</td>
-        <td class= "col-3 px-0 py-2 pl-1 table-dark">購入者</td>
-
-      </tr>
-
-      <% @orders.each do |order| %>
-        <tr class="border-bottom">
-        <td class = "align-middle">
-          <%=link_to admin_order_path order do %>
-          <%= order.created_at.strftime('%Y/%m/%d') %>
-          <% end %>
-        </td>
-        <td class = "align-middle"><%= order.end_user.name %></td>
+  <% @orders.each do |order| %>
+    <div class="row col-lg-8 border border-top-0 py-3 mx-auto">
+      <%= link_to  admin_order_path(order), class: "col-12 d-flex text-dark text-decoration-none px-0" do %>
+        <div class="col-6 pr-0"><%= order.created_at.strftime("%Y-%m-%d %H:%M:%S") %></div>
+        <div class="col-6 pr-0"><%= order.end_user.name %></div>
       <% end %>
-    </table>
-    <div class ="row col-12">
-      <div class ="col">
-        <span class="textt-center"><%= paginate @orders %></span>
-      </div>
     </div>
-  </div>
+  <% end %>
+  <div class="my-3"><%= paginate @orders %></div>
 </div>
