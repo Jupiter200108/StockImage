@@ -13,11 +13,11 @@
 </div>
 
 <div class="container my-5">
-  <div class="row h2 py-3 my-md-5 my-3 mx-0">画像</div>
-  <div class="row flex-wrap mb-5 pb-5">
+  <div class="row h2 py-3 mt-3 mx-0">画像ジャンル</div>
+  <div class="row flex-wrap pb-3 my-4">
     <% @genres.each do |genre| %>
     <div class="col-4 col-lg">
-      <%= link_to genre_path(genre.id),class: "btn btn-light rounded-pill text-dark text-decoration-none align-center px-2" do %>
+      <%= link_to genre_path(genre.id),class: "btn btn-light rounded-pill border text-dark text-decoration-none align-center px-2" do %>
         <div class="text-center">
         <%= genre.name %>
         </div>
@@ -25,7 +25,8 @@
     </div>
     <% end %>
   </div>
-  <div class="row py-5">
+  <div class="row h2 py-3 my-md-3 my-1 mx-0">画像サンプル</div>
+  <div class="row pb-5">
     <div class="line-images">
       <% @items.each do |item| %>
         <div class="line-image">
