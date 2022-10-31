@@ -91,6 +91,7 @@ Item.create!(
   {name: 'アジアの棚田', content: ActiveStorage::Blob.create_and_upload!(io: File.open("#{Rails.root}/db/fixtures/asia.jpg"), filename:"asia.jpg"), introduction: 'アジアの棚田で作業する親子の写真です。test', end_user_id: users[0].id,category_id: categories[17].id,genre_id: genres[0].id,is_active: "true"},
   {name: '大きな湖', content: ActiveStorage::Blob.create_and_upload!(io: File.open("#{Rails.root}/db/fixtures/lake.jpg"), filename:"lake.jpg"), introduction: '湖です。test', end_user_id: users[7].id,category_id: categories[16].id,genre_id: genres[0].id,is_active: "true"},
   {name: 'ヨーロッパの街並み', content: ActiveStorage::Blob.create_and_upload!(io: File.open("#{Rails.root}/db/fixtures/image1.jpg"), filename:"image1.jpg"), introduction: 'ヨーロッパの街並みが綺麗です。test', end_user_id: users[15].id,category_id: categories[15].id,genre_id: genres[0].id,is_active: "true"},
+  {name: '草原に佇む牛', content: ActiveStorage::Blob.create_and_upload!(io: File.open("#{Rails.root}/db/fixtures/cattle.mp4"), filename:"cattle.mp4"), introduction: '草原の牛を捉えています。test', end_user_id: users[11].id,category_id: categories[1].id,genre_id: genres[6].id,is_active: "true"},
   {name: '広大な農場', content: ActiveStorage::Blob.create_and_upload!(io: File.open("#{Rails.root}/db/fixtures/image5.jpg"), filename:"image5.jpg"), introduction: '巨大な農場を映しました。test', end_user_id: users[3].id,category_id: categories[15].id,genre_id: genres[0].id,is_active: "true"},
   {name: '空港', content: ActiveStorage::Blob.create_and_upload!(io: File.open("#{Rails.root}/db/fixtures/airport.jpg"), filename:"airport.jpg"), introduction: '一般的な空港です。test', end_user_id: users[0].id,category_id: categories[21].id,genre_id: genres[0].id,is_active: "true"},
   {name: '血清作成', content: ActiveStorage::Blob.create_and_upload!(io: File.open("#{Rails.root}/db/fixtures/health1.jpg"), filename:"health1.jpg"), introduction: '血清を作成している様子のイメージ画像です。test', end_user_id: users[1].id,category_id: categories[10].id,genre_id: genres[5].id,is_active: "true"},
@@ -105,7 +106,6 @@ Item.create!(
   {name: '肉食獣', content: ActiveStorage::Blob.create_and_upload!(io: File.open("#{Rails.root}/db/fixtures/illustration17.jpg"), filename:"illustration17.jpg"), introduction: '肉食動物をカッコよく描きました。test', end_user_id: users[16].id,category_id: categories[1].id,genre_id: genres[1].id,is_active: "true"},
   {name: 'サンダル', content: ActiveStorage::Blob.create_and_upload!(io: File.open("#{Rails.root}/db/fixtures/illustration12.jpg"), filename:"illustration12.jpg"), introduction: 'サンダルの絵です。test', end_user_id: users[1].id,category_id: categories[17].id,genre_id: genres[1].id,is_active: "true"},
   {name: '道路', content: ActiveStorage::Blob.create_and_upload!(io: File.open("#{Rails.root}/db/fixtures/road.jpg"), filename:"road.jpg"), introduction: '道路です。test', end_user_id: users[7].id,category_id: categories[0].id,genre_id: genres[0].id,is_active: "true"},
-  {name: '草原に佇む牛', content: ActiveStorage::Blob.create_and_upload!(io: File.open("#{Rails.root}/db/fixtures/cattle.mp4"), filename:"cattle.mp4"), introduction: '草原の牛を捉えています。test', end_user_id: users[11].id,category_id: categories[1].id,genre_id: genres[6].id,is_active: "true"},
   {name: '黒い犬', content: ActiveStorage::Blob.create_and_upload!(io: File.open("#{Rails.root}/db/fixtures/illustration2.jpg"), filename:"illustration2.jpg"), introduction: '黒い犬の絵です。test', end_user_id: users[1].id,category_id: categories[1].id,genre_id: genres[1].id,is_active: "true"},
   {name: '絵を描く女性', content: ActiveStorage::Blob.create_and_upload!(io: File.open("#{Rails.root}/db/fixtures/illustration18.jpg"), filename:"illustration18.jpg"), introduction: '絵を描く女性の絵です。test', end_user_id: users[16].id,category_id: categories[18].id,genre_id: genres[1].id,is_active: "true"},
   {name: 'ワクチン容器', content: ActiveStorage::Blob.create_and_upload!(io: File.open("#{Rails.root}/db/fixtures/illustration9.jpg"), filename:"illustration9.jpg"), introduction: 'ワクチン容器の絵です。test', end_user_id: users[5].id,category_id: categories[10].id,genre_id: genres[1].id,is_active: "true"},
@@ -118,7 +118,7 @@ Item.create!(
   {name: 'ねずみちゃん', content: ActiveStorage::Blob.create_and_upload!(io: File.open("#{Rails.root}/db/fixtures/illustration11.jpg"), filename:"illustration11.jpg"), introduction: 'ねずみを可愛く書きました。test', end_user_id: users[1].id,category_id: categories[1].id,genre_id: genres[1].id,is_active: "true"},
   {name: '壁に描かれた絵', content: ActiveStorage::Blob.create_and_upload!(io: File.open("#{Rails.root}/db/fixtures/art2.jpg"), filename:"art2.jpg"), introduction: '壁に描かれた絵の抽象画です。test', end_user_id: users[1].id,category_id: categories[2].id,genre_id: genres[0].id,is_active: "true"},
   {name: '日の出', content: ActiveStorage::Blob.create_and_upload!(io: File.open("#{Rails.root}/db/fixtures/sunset.jpg"), filename:"sunset.jpg"), introduction: '日の出の落ち着く雰囲気を表現しました。test', end_user_id: users[7].id,category_id: categories[16].id,genre_id: genres[0].id,is_active: "true"},
-  {name: 'ヘモグロビン', content: ActiveStorage::Blob.create_and_upload!(io: File.open("#{Rails.root}/db/fixtures/health2.jpg"), filename:"health2.jpg"), introduction: 'ヘモグロビンのイメ��ジ画像です。test', end_user_id: users[1].id,category_id: categories[10].id,genre_id: genres[5].id,is_active: "true"},
+  {name: 'ヘモグロビン', content: ActiveStorage::Blob.create_and_upload!(io: File.open("#{Rails.root}/db/fixtures/health2.jpg"), filename:"health2.jpg"), introduction: 'ヘモグロビンのイメージ画像です。test', end_user_id: users[1].id,category_id: categories[10].id,genre_id: genres[5].id,is_active: "true"},
   {name: 'リサイクルを掲げる女性', content: ActiveStorage::Blob.create_and_upload!(io: File.open("#{Rails.root}/db/fixtures/illustration1.jpg"), filename:"illustration1.jpg"), introduction: 'リサイクルを掲げる女性です。test', end_user_id: users[1].id,category_id: categories[0].id,genre_id: genres[1].id,is_active: "true"},
   {name: 'ハンモックで休憩する男女', content: ActiveStorage::Blob.create_and_upload!(io: File.open("#{Rails.root}/db/fixtures/illustration8.jpg"), filename:"illustration8.jpg"), introduction: 'ハンモックで休憩する男女の絵です。test', end_user_id: users[11].id,category_id: categories[20].id,genre_id: genres[1].id,is_active: "true"},
 
@@ -126,8 +126,10 @@ Item.create!(
 )
 
 Item.find_each do |item|
+ if item.content.content_type.include?('image/')
   tags = Vision.get_image_data(item.content)
   tags.each do |tag|
     item.tags.create(name: tag)
   end
+ end
 end
