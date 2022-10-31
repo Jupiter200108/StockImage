@@ -1,7 +1,7 @@
 <div class="container mt-5">
-<div class="row mb-5 mx-0">
-  <h3>商品詳細</h3>
-</div>
+  <div class="row mb-5 mx-0">
+    <h3>商品詳細</h3>
+  </div>
 
   <div class="row col-12 col-xl-11 justify-content-center shadow-lg px-4 py-5 mx-0">
 
@@ -12,13 +12,18 @@
 
     <div class="ol-md-12 col-lg-6">
       <div class="row col-12 mb-2">
+        <div class="col-4 align-top">ID</div>
+        <div class="col-8 align-top"><%= @item.id %></div>
+      </div>
+
+      <div class="row col-12 mb-2">
         <div class="col-4 align-top">タイトル</div>
-        <div class="col-8 align-top"><%= @item.name %></div>
+        <div class="col-8 align-top text-short"><%= @item.name %></div>
       </div>
 
       <div class="row col-12 mb-2">
         <div class="col-4 align-top">説明</div>
-        <div class="col-8 align-top text-wrap text-break"><%= @item.introduction %></div>
+        <div class="col-8 align-top text-wrap text-break text-short"><%= @item.introduction %></div>
       </div>
 
       <div class="row col-12 mb-2">
@@ -34,6 +39,14 @@
       <div class="row col-12 mb-2">
         <div class="col-4 align-top">価格</div>
         <div class="col-8 align-top">1000円</div>
+      </div>
+      <div class="row col-12 mb-2">
+        <div class="col-4">タグ</div>
+        <div class="col-8 dflex flex-wrap aline-center">
+        <% @item.tags.each do |tag| %>
+          <span class="badge badge-pill badge-info mx-1"><%= tag.name %></span>
+        <% end %>
+        </div>
       </div>
     </div>
     <div class="col-md-12 text-center mt-5"><%= link_to "編集する", edit_admin_item_path(@item.id), class: "btn btn-sm btn-outline-success rounded-pill border border-3" %></div>
