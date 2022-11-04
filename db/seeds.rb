@@ -121,7 +121,19 @@ Item.create!(
   {name: 'ヘモグロビン', content: ActiveStorage::Blob.create_and_upload!(io: File.open("#{Rails.root}/db/fixtures/health2.jpg"), filename:"health2.jpg"), introduction: 'ヘモグロビンのイメージ画像です。test', end_user_id: users[1].id,category_id: categories[10].id,genre_id: genres[5].id,is_active: "true"},
   {name: 'リサイクルを掲げる女性', content: ActiveStorage::Blob.create_and_upload!(io: File.open("#{Rails.root}/db/fixtures/illustration1.jpg"), filename:"illustration1.jpg"), introduction: 'リサイクルを掲げる女性です。test', end_user_id: users[1].id,category_id: categories[0].id,genre_id: genres[1].id,is_active: "true"},
   {name: 'ハンモックで休憩する男女', content: ActiveStorage::Blob.create_and_upload!(io: File.open("#{Rails.root}/db/fixtures/illustration8.jpg"), filename:"illustration8.jpg"), introduction: 'ハンモックで休憩する男女の絵です。test', end_user_id: users[11].id,category_id: categories[20].id,genre_id: genres[1].id,is_active: "true"},
-
+  {name: 'アジアのお祭り', content: ActiveStorage::Blob.create_and_upload!(io: File.open("#{Rails.root}/db/fixtures/holiday1.jpg"), filename:"holiday1.jpg"), introduction: 'アジアの伝統的なお祭りの風景です。test', end_user_id: users[3].id,category_id: categories[11].id,genre_id: genres[0].id,is_active: "true"},
+  {name: 'クローク建築の建物', content: ActiveStorage::Blob.create_and_upload!(io: File.open("#{Rails.root}/db/fixtures/photo1.jpg"), filename:"photo1.jpg"), introduction: 'クローク建築の建物です。test', end_user_id: users[10].id,category_id: categories[5].id,genre_id: genres[0].id,is_active: "true"},
+  {name: '覗く猫', content: ActiveStorage::Blob.create_and_upload!(io: File.open("#{Rails.root}/db/fixtures/photo2.jpg"), filename:"photo2.jpg"), introduction: '布団の中からこちらをのぞいています。test', end_user_id: users[10].id,category_id: categories[1].id,genre_id: genres[0].id,is_active: "true"},
+  {name: '夕方の電車', content: ActiveStorage::Blob.create_and_upload!(io: File.open("#{Rails.root}/db/fixtures/photo3.jpg"), filename:"photo3.jpg"), introduction: '夕方の時間帯を走る電車を写真におさめました。test', end_user_id: users[11].id,category_id: categories[21].id,genre_id: genres[0].id,is_active: "true"},
+  {name: '悲しきロバ', content: ActiveStorage::Blob.create_and_upload!(io: File.open("#{Rails.root}/db/fixtures/photo4.jpg"), filename:"photo4.jpg"), introduction: '悲しそうなロバの写真です。test', end_user_id: users[10].id,category_id: categories[18].id,genre_id: genres[0].id,is_active: "true"},
+  {name: 'おしゃれな男性', content: ActiveStorage::Blob.create_and_upload!(io: File.open("#{Rails.root}/db/fixtures/photo5.jpg"), filename:"photo5.jpg"), introduction: '男の人を収めた素材です。test', end_user_id: users[13].id,category_id: categories[1].id,genre_id: genres[0].id,is_active: "true"},
+  {name: '心落ち着く焚き火', content: ActiveStorage::Blob.create_and_upload!(io: File.open("#{Rails.root}/db/fixtures/photo6.jpg"), filename:"photo6.jpg"), introduction: '焚き火のほのうに惹かれました。test', end_user_id: users[13].id,category_id: categories[15].id,genre_id: genres[0].id,is_active: "true"},
+  {name: '紫の世界', content: ActiveStorage::Blob.create_and_upload!(io: File.open("#{Rails.root}/db/fixtures/photo7.jpg"), filename:"photo7.jpg"), introduction: '綺麗な紫色の抽象風景です。test', end_user_id: users[13].id,category_id: categories[3].id,genre_id: genres[5].id,is_active: "true"},
+  {name: '混沌', content: ActiveStorage::Blob.create_and_upload!(io: File.open("#{Rails.root}/db/fixtures/photo8.jpg"), filename:"photo8.jpg"), introduction: '黄色と紫を主体とした作品です。test', end_user_id: users[13].id,category_id: categories[3].id,genre_id: genres[5].id,is_active: "true"},
+  
+  
+  
+  
  ]
 )
 
