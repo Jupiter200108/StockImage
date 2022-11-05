@@ -14,7 +14,7 @@ Stock Image
 自分のブログに必要な画像や挿画の素材を探すとき。
 
 ## 設計書
-
+![StockImage drawio](https://user-images.githubusercontent.com/110474164/200115865-477230fe-4e45-4656-9cf3-1cfb52a287e5.png)
 
 ## 開発環境
 - OS：Linux(CentOS)
