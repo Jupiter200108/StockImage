@@ -2,8 +2,8 @@ class Admin::OrdersController < ApplicationController
   before_action :authenticate_admin!
 
   def show
-     @order = Order.find(params[:id])
-     @order_details= @order.order_details
+    @order = Order.find(params[:id])
+    @order_details = @order.order_details
   end
 
   def index
@@ -11,13 +11,12 @@ class Admin::OrdersController < ApplicationController
   end
 
   def update
-    @order= Order.find(params[:id])
-    @order_details= @order.order_details
+    @order = Order.find(params[:id])
+    @order_details = @order.order_details
   end
 
   private
-
-  def order_params
-    params.require(:order).permit(:end_user_id, :total_payment)
-  end
+    def order_params
+      params.require(:order).permit(:end_user_id, :total_payment)
+    end
 end

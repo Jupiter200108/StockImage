@@ -1,8 +1,8 @@
 class Admin::GenresController < ApplicationController
   before_action :authenticate_admin!
-  
+
   def index
-    @genre   = Genre.new
+    @genre = Genre.new
     @genres_image  = Genre.where(contents_status: 0)
     @genres_video  = Genre.where(contents_status: 1)
   end
@@ -32,7 +32,7 @@ class Admin::GenresController < ApplicationController
   end
 
   private
-  def genre_params
-    params.require(:genre).permit(:name, :contents_status)
-  end
+    def genre_params
+      params.require(:genre).permit(:name, :contents_status)
+    end
 end

@@ -2,7 +2,7 @@ class Admin::CategoriesController < ApplicationController
   before_action :authenticate_admin!
 
   def index
-    @category   = Category.new
+    @category = Category.new
     @categories  = Category.all
   end
 
@@ -15,7 +15,7 @@ class Admin::CategoriesController < ApplicationController
     if @category.save
       redirect_to request.referer
     else
-      @category   = Category.new
+      @category = Category.new
       @categories  = Category.all
       render :index
     end
@@ -31,7 +31,7 @@ class Admin::CategoriesController < ApplicationController
   end
 
   private
-  def category_params
-    params.require(:category).permit(:name)
-  end
+    def category_params
+      params.require(:category).permit(:name)
+    end
 end

@@ -8,7 +8,7 @@ class CreateItems < ActiveRecord::Migration[6.1]
       t.text :introduction
       t.integer :price, null: false, default: "1000"
       t.integer :contents_status
-      ##公開ステータス
+      # #公開ステータス
       t.boolean :is_active, null: false, default: "true"
 
       t.timestamps

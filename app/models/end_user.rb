@@ -8,7 +8,7 @@ class EndUser < ApplicationRecord
     super && (is_deleted == false)
   end
 
-  validates :name, presence: true        ,length: { in: 1..15 }
+  validates :name, presence: true, length: { in: 1..15 }
 
   has_many :cart_items, dependent: :destroy
   has_many :orders, dependent: :destroy
@@ -16,5 +16,4 @@ class EndUser < ApplicationRecord
   has_many :ordered_items, through: :order_details, source: :item
   has_many :items
   has_many :favorites, dependent: :destroy
-  
 end

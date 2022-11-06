@@ -10,7 +10,7 @@ class Public::ItemsController < ApplicationController
     @item = Item.new(item_params)
     @item.end_user_id = current_end_user.id
     if @item.save
-      if @item.content.content_type.include?('image/')
+      if @item.content.content_type.include?("image/")
         tags = Vision.get_image_data(@item.content)
         tags.each do |tag|
           @item.tags.create(name: tag)
@@ -34,9 +34,8 @@ class Public::ItemsController < ApplicationController
   end
 
   def edit
-
     @item = Item.find(params[:id])
-     require_permission(@item)
+    require_permission(@item)
   end
 
   def update
@@ -52,25 +51,22 @@ class Public::ItemsController < ApplicationController
   def download
     item = Item.find(params[:id]).content
     data = item.download
-    if item.content_type.include?('image/')
-      send_data(data, type: 'image/', filename: 'download.jpg')
+    if item.content_type.include?("image/")
+      send_data(data, type: "image/", filename: "download.jpg")
     else
-      send_data(data, type: 'video/', filename: 'download.mp4')
+      send_data(data, type: "video/", filename: "download.mp4")
     end
-
   end
 
 
   private
-
-  def item_params
-    params.require(:item).permit(:end_user_id, :category_id, :genre_id, :name, :introduction, :price, :contents_status, :content, :is_active)
-  end
-
-  def require_permission(item)
-    unless item.end_user == current_end_user
-      redirect_to root_path, alert: 'ここから先は管理者限定です！'
+    def item_params
+      params.require(:item).permit(:end_user_id, :category_id, :genre_id, :name, :introduction, :price, :contents_status, :content, :is_active)
     end
-  end
 
+    def require_permission(item)
+      unless item.end_user == current_end_user
+        redirect_to root_path, alert: "ここから先は管理者限定です！"
+      end
+    end
 end

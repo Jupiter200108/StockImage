@@ -1,6 +1,6 @@
 class Public::EndUsersController < ApplicationController
   before_action :authenticate_end_user!
-  
+
   def show
     @end_user = current_end_user
   end
@@ -22,12 +22,11 @@ class Public::EndUsersController < ApplicationController
   def update
     @end_user = EndUser.find(params[:id])
     @end_user.update(end_user_params)
-      redirect_to end_user_path
-    
+    redirect_to end_user_path
   end
-  
+
   private
-  def end_user_params
-    params.require(:end_user).permit(:name, :email)
-  end
+    def end_user_params
+      params.require(:end_user).permit(:name, :email)
+    end
 end

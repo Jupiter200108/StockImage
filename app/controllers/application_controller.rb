@@ -3,9 +3,9 @@ class ApplicationController < ActionController::Base
 
   def after_sign_out_path_for(resource_or_scope)
     if resource_or_scope == :admin
-        new_admin_session_path
+      new_admin_session_path
     else
-        root_path
+      root_path
     end
   end
 
@@ -25,9 +25,8 @@ class ApplicationController < ActionController::Base
   end
 
   private
-  ##nameの保存も許可
-  def configure_permitted_parameters
-    devise_parameter_sanitizer.permit(:sign_up,keys:[:name, :email]) # 注目
-  end
-
+    # #nameの保存も許可
+    def configure_permitted_parameters
+      devise_parameter_sanitizer.permit(:sign_up, keys: [:name, :email]) # 注目
+    end
 end

@@ -3,14 +3,14 @@ class Item < ApplicationRecord
   belongs_to :category
   belongs_to :genre
   belongs_to :end_user
-  has_many :cart_items,dependent: :destroy
+  has_many :cart_items, dependent: :destroy
   has_many :favorites, dependent: :destroy
   has_many :order_details
   has_many :tags, dependent: :destroy
 
   validates :content, presence: true
-  validates :name, presence: true,length: { in: 1..15 }
-  validates :introduction, presence: true,length: { in: 1..75 }
+  validates :name, presence: true, length: { in: 1..15 }
+  validates :introduction, presence: true, length: { in: 1..75 }
   validates :genre_id, presence: true
   validates :category_id, presence: true
   validates :price, presence: true
@@ -42,7 +42,6 @@ class Item < ApplicationRecord
     Item.search_by_category.merge(Tag.name_like word).or(
       Item.search_by_category.merge(Category.name_like word)).or(
         Item.search_by_category.merge(Genre.name_like word)).or(
-          where("items.name LIKE?","%#{word}%")).distinct
+          where("items.name LIKE?", "%#{word}%")).distinct
   end
-
 end
