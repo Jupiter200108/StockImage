@@ -25,8 +25,8 @@ class ApplicationController < ActionController::Base
   end
 
   private
-    # #nameの保存も許可
-    def configure_permitted_parameters
-      devise_parameter_sanitizer.permit(:sign_up, keys: [:name, :email]) # 注目
-    end
+  # #nameの保存も許可
+  def configure_permitted_parameters
+    devise_parameter_sanitizer.permit(:sign_up, keys: [:name, :email]) # 注目
+  end
 end
