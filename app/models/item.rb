@@ -16,7 +16,7 @@ class Item < ApplicationRecord
   validates :price, presence: true
   validates :is_active, inclusion: [true, false]
 
-  scope :search_by_category, ->  do
+  scope :search_by_content, ->  do
     joins(:category)
     .joins(:tags)
     .joins(:genre)
@@ -39,9 +39,9 @@ class Item < ApplicationRecord
   end
 
   def self.looks(word)
-    Item.search_by_category.merge(Tag.name_like word).or(
-      Item.search_by_category.merge(Category.name_like word)).or(
-        Item.search_by_category.merge(Genre.name_like word)).or(
+    Item.search_by_content.merge(Tag.name_like word).or(
+      Item.search_by_content.merge(Category.name_like word)).or(
+        Item.search_by_content.merge(Genre.name_like word)).or(
           where("items.name LIKE?", "%#{word}%")).distinct
   end
 end
