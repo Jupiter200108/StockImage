@@ -2,7 +2,7 @@ class Public::FavoritesController < ApplicationController
   before_action :authenticate_end_user!
 
   def index
-    @favorites = current_end_user.favorites.page(params[:page]).per(20)
+    @favorites = current_end_user.favorites.includes(item: :content_blob).page(params[:page]).per(20)
   end
 
   def create

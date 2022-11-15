@@ -33,7 +33,7 @@
           </div>
           <div class="col-md-12 my-2 d-flex flex-wrap border border-2 rounded-lg px-0">
             <div class="col-6 py-2">合計金額</div>
-            <div class="col-6 py-2 text-right">¥<%= (@order.total_payment).to_s(:delimited)%></div>
+            <div class="col-6 py-2 text-right">¥<%= (@order.total_payment).to_s(:delimited) %></div>
           </div>
         </div>
       </div>
@@ -48,8 +48,8 @@
             <div class="col-6 py-2">商品</div>
             <div class="col-6 py-2">価格</div>
             <% @order_details.each do |order_detail| %>
-              <div class="col-6 border-top border-2 py-2">ID:<%= order_detail.item.id%>　<%= order_detail.item.name%></div>
-              <div class="col-6 border-top border-2 py-2">¥<%= order_detail.item.price%></div>
+              <div class="col-6 border-top border-2 py-2">ID:<%= order_detail.item.id %>　<%= order_detail.item.name %></div>
+              <div class="col-6 border-top border-2 py-2">¥<%= order_detail.item.price.to_s(:delimited) %></div>
             <% end %>
 
           </div>

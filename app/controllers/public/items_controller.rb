@@ -3,7 +3,21 @@ class Public::ItemsController < ApplicationController
 
   def new
     @item = Item.new
-    @items = current_end_user.items.order("created_at DESC").page(params[:page]).per(12)
+    @items = current_end_user.items.includes(:content_blob).order("created_at DESC").page(params[:page]).per(12)
+  end
+
+  def show
+    @item = Item.find(params[:id])
+    @cart_item = CartItem.new
+  end
+
+  def index
+    @items = Item.includes(:content_blob).where(is_active: true).page(params[:page]).per(50)
+  end
+
+  def edit
+    @item = Item.find(params[:id])
+    require_permission(@item)
   end
 
   def create
@@ -16,26 +30,11 @@ class Public::ItemsController < ApplicationController
           @item.tags.create(name: tag)
         end
       end
-
-      @items = current_end_user.items.order("created_at DESC").page(params[:page]).per(12)
+      @items = current_end_user.items.includes(:content_blob).order("created_at DESC").page(params[:page]).per(12)
     else
       @item = Item.new
       render :new
     end
-  end
-
-  def show
-    @item = Item.find(params[:id])
-    @cart_item = CartItem.new
-  end
-
-  def index
-    @items = Item.where(is_active: true).page(params[:page]).per(50)
-  end
-
-  def edit
-    @item = Item.find(params[:id])
-    require_permission(@item)
   end
 
   def update

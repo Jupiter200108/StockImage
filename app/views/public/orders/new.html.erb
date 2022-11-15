@@ -8,15 +8,15 @@
           </div>
         </div>
         <div class="col-md-10">
-          <div class="col-md-12 d-flex border border-3 rounded-lg my-2 py-2 px-2">
+          <div class="col-md-12 d-flex border border-3 rounded-lg my-2 pl-2 pr-0">
             <%= f.radio_button :payment_method, Order.payment_methods.key(0) %>
-            <%= f.label :payment_method_credit_card, Order.payment_methods_i18n[:credit_card], class: "h5 my-auto" %>
+            <%= f.label :payment_method_credit_card, Order.payment_methods_i18n[:credit_card], class: "col h5 my-auto py-2 px-2" %>
           </div>
         </div>
         <div class="col-md-10">
-          <div class="col-md-12 d-flex border border-3 rounded-lg my-2 py-2 px-2">
+          <div class="col-md-12 d-flex border border-3 rounded-lg my-2 pl-2 pr-0">
             <%= f.radio_button :payment_method, Order.payment_methods.key(1) %>
-            <%= f.label :payment_method_transfer, Order.payment_methods_i18n[:transfer], class: "h5 my-auto"%>
+            <%= f.label :payment_method_transfer, Order.payment_methods_i18n[:transfer], class: "col h5 my-auto py-2 px-2"%>
           </div>
         </div>
       </div>

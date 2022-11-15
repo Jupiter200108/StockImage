@@ -3,16 +3,11 @@ class Admin::OrdersController < ApplicationController
 
   def show
     @order = Order.find(params[:id])
-    @order_details = @order.order_details
+    @order_details = @order.order_details.includes(:item)
   end
 
   def index
-    @orders = Order.page(params[:page]).per(10)
-  end
-
-  def update
-    @order = Order.find(params[:id])
-    @order_details = @order.order_details
+    @orders = Order.includes(:end_user).page(params[:page]).per(10)
   end
 
   private

@@ -25,7 +25,7 @@ class Admin::EndUsersController < ApplicationController
   def search_order
     @genres = Genre.all
     @end_user = EndUser.find(params[:id])
-    @end_userorders = Order.where(end_user_id: @end_user.id).page(params[:page]).per(15)
+    @end_userorders = Order.includes(:end_user).where(end_user_id: @end_user.id).page(params[:page]).per(15)
   end
 
   private

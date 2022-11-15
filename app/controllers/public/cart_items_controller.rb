@@ -2,7 +2,7 @@ class Public::CartItemsController < ApplicationController
   before_action :authenticate_end_user!
 
   def index
-    @cart_items = current_end_user.cart_items.all
+    @cart_items = current_end_user.cart_items.includes(item: :content_blob)
     @total_payment = 0
   end
 
@@ -19,14 +19,13 @@ class Public::CartItemsController < ApplicationController
   end
 
   def destroy_all
-    cart_items = current_end_user.cart_items.all
+    cart_items = current_end_user.cart_items.includes(:item, :content_attachment)
     cart_items.destroy_all
     redirect_to cart_items_path
   end
 
   def create
     @cart_item = current_end_user.cart_items.new(cart_item_params)
-    @cart_items = current_end_user.cart_items.all
 
     @cart_item.save
     redirect_to :cart_items

@@ -133,7 +133,7 @@ Item.create!(
   { name: "心落ち着く焚き火", content: ActiveStorage::Blob.create_and_upload!(io: File.open("#{Rails.root}/db/fixtures/photo6.jpg"), filename: "photo6.jpg"), introduction: "焚き火のほのうに惹かれました。test", end_user_id: users[13].id, category_id: categories[15].id, genre_id: genres[0].id, is_active: "true" },
   { name: "紫の世界", content: ActiveStorage::Blob.create_and_upload!(io: File.open("#{Rails.root}/db/fixtures/photo7.jpg"), filename: "photo7.jpg"), introduction: "綺麗な紫色の抽象風景です。test", end_user_id: users[13].id, category_id: categories[3].id, genre_id: genres[5].id, is_active: "true" },
   { name: "混沌", content: ActiveStorage::Blob.create_and_upload!(io: File.open("#{Rails.root}/db/fixtures/photo8.jpg"), filename: "photo8.jpg"), introduction: "黄色と紫を主体とした作品です。test", end_user_id: users[13].id, category_id: categories[3].id, genre_id: genres[5].id, is_active: "true" },
- ]
+ ] 
 )
 
 ActiveStorage::AnalyzeJob.queue_adapter = :inline

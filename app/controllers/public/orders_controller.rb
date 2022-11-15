@@ -4,8 +4,7 @@ class Public::OrdersController < ApplicationController
   def new
     if current_end_user.cart_items.count != 0
       @order = Order.new
-      @name = current_end_user.name
-      @cart_items = current_end_user.cart_items.all
+      @cart_items = current_end_user.cart_items.includes(:item)
       @total_payment = 0
     else
       redirect_to root_path
@@ -13,7 +12,7 @@ class Public::OrdersController < ApplicationController
   end
 
   def index
-    @orders = current_end_user.orders.page(params[:page]).per(10)
+    @orders = current_end_user.orders.includes(order_details: :item).page(params[:page]).per(10)
   end
 
   def show
@@ -22,7 +21,7 @@ class Public::OrdersController < ApplicationController
       return
     end
     @order = current_end_user.orders.find(params[:id])
-    @order_details = @order.order_details.all
+    @order_details = @order.order_details.includes(:item)
   end
 
   def thanks
@@ -33,20 +32,16 @@ class Public::OrdersController < ApplicationController
     if current_end_user.cart_items.count != 0
       @order = Order.new(order_params)
       @cart_items = current_end_user.cart_items
-      @order_new = Order.new
     else
       redirect_to root_path
     end
-    @order.save
-    @cart_items = current_end_user.cart_items
-    @order_new = Order.new
+    @cart_items = current_end_user.cart_items.includes(item: :content_blob)
   end
 
   def create
-    pp Order.new, order_params
     @order = Order.new(order_params)
     @order.save
-    @cart_items = current_end_user.cart_items.all
+    @cart_items = current_end_user.cart_items.includes(:item)
     @cart_items.each do |cart_item|
       @order_details = OrderDetail.new
       @order_details.item_id = cart_item.item.id
@@ -54,7 +49,7 @@ class Public::OrdersController < ApplicationController
       @order_details.order_id = @order.id
       @order_details.save
     end
-    current_end_user.cart_items.destroy_all
+    current_end_user.cart_items.includes(:item, :content_attachment).destroy_all
     redirect_to orders_thanks_path
   end
 

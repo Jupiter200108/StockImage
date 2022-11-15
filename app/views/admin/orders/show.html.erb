@@ -30,7 +30,7 @@
         <div class="col-5 pr-0">商品名</div>
         <div class="col-4 pr-0">価格</div>
       </div>
-      <% @order.order_details.each do |order_detail| %>
+      <% @order_details.each do |order_detail| %>
         <div class="row col-10 border border-top-0 py-2 px-0 mx-0">
           <div class="col-3 pr-0"><%=order_detail.item.id %></div>
           <div class="col-5 pr-0 text-short"><%=order_detail.item.name %></div>
