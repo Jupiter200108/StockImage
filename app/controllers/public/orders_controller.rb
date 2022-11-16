@@ -39,18 +39,13 @@ class Public::OrdersController < ApplicationController
   end
 
   def create
-    @order = Order.new(order_params)
-    @order.save
-    @cart_items = current_end_user.cart_items.includes(:item)
-    @cart_items.each do |cart_item|
-      @order_details = OrderDetail.new
-      @order_details.item_id = cart_item.item.id
-      @order_details.price = cart_item.item.price
-      @order_details.order_id = @order.id
-      @order_details.save
+    @order = current_end_user.orders.new(order_params)
+    if @order.save
+      @order.create_order_details(current_end_user)
+      redirect_to orders_thanks_path
+    else
+      render :new
     end
-    current_end_user.cart_items.includes(:item, :content_attachment).destroy_all
-    redirect_to orders_thanks_path
   end
 
   private
