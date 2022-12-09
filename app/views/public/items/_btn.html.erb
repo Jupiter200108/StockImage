@@ -1,30 +1,30 @@
 <div class="col-xl-4">
-    <%= form_with model: item,url: items_path,method: :post, local: false do |f| %>
-  <div class="row d-flex border border-3 rounded-lg py-3 px-0 my-2">
-    <div class="col-4 align-top"><%= f.label :content,"画像・動画" %></div>
-    <div class="col-8 align-top"><%= f.file_field :content, accept: "image/*", class: "col-12 px-0" %></div>
-
-    <div class="col-4 align-top"><%= f.label :name,"タイトル" %></div>
-    <div class="col-8 align-top"><%= f.text_field :name,placeholder: '1〜１５字にしてください',maxlength: 15, class: "col-12 px-1" %></div>
-
-    <div class="col-4 align-top"><%= f.label :introduction,"説明" %></div>
-    <div class="col-8 align-top"><%= f.text_area :introduction,placeholder: '1〜７５字にしてください',maxlength: 75, class: "col-12 px-1",rows: "7" %></div>
-
-    <div class="col-4 align-top"><%= f.label :genre_id,"ジャンル" %></div>
-    <div class="col-8 align-top"><%= f.select :genre_id, options_from_collection_for_select(Genre.all, :id, :name), {prompt: "選択してください"}, class: "form-control-sm col-12 px-1" %></div>
-
-    <div class="col-4 align-top"><%= f.label :category_id,"カテゴリー" %></div>
-    <div class="col-8 align-top"><%= f.select :category_id, options_from_collection_for_select(Category.all, :id, :name), {prompt: "選択してください"}, class: "form-control-sm col-12 px-1" %></div>
-
-    <div class="col-4 align-top"><%= f.label :category_id,"公開" %></div>
-    <div class="col-4 align-top"><%= f.radio_button :is_active, :true, checked: true %><%= f.label :is_active_true,"ON" %></div>
-    <div class="col-4 align-top"><%= f.radio_button :is_active, :false %><%= f.label :is_active_false, "OFF" %></div>
-
-    <%= f.hidden_field :price %>
-
-    <div class="col-12 text-center mt-4 mx-auto"><%= f.submit "新規登録", class: "btn btn-sm btn-outline-success text-center rounded-pill border border-3" %></div>
-  </div>
-    <% end %>
+  <%= form_with model: item,url: items_path,method: :post, local: false do |f| %>
+    <div class="row d-flex border border-3 rounded-lg py-3 px-0 my-2">
+      <div class="col-4 align-top"><%= f.label :content,"画像・動画" %></div>
+      <div class="col-8 align-top"><%= f.file_field :content, accept: "image/*", class: "col-12 px-0" %></div>
+  
+      <div class="col-4 align-top"><%= f.label :name,"タイトル" %></div>
+      <div class="col-8 align-top"><%= f.text_field :name,placeholder: '1〜１５字にしてください',maxlength: 15, class: "col-12 px-1" %></div>
+  
+      <div class="col-4 align-top"><%= f.label :introduction,"説明" %></div>
+      <div class="col-8 align-top"><%= f.text_area :introduction,placeholder: '1〜７５字にしてください',maxlength: 75, class: "col-12 px-1",rows: "7" %></div>
+  
+      <div class="col-4 align-top"><%= f.label :genre_id,"ジャンル" %></div>
+      <div class="col-8 align-top"><%= f.select :genre_id, options_from_collection_for_select(Genre.all, :id, :name), {prompt: "選択してください"}, class: "form-control-sm col-12 px-1" %></div>
+  
+      <div class="col-4 align-top"><%= f.label :category_id,"カテゴリー" %></div>
+      <div class="col-8 align-top"><%= f.select :category_id, options_from_collection_for_select(Category.all, :id, :name), {prompt: "選択してください"}, class: "form-control-sm col-12 px-1" %></div>
+  
+      <div class="col-4 align-top"><%= f.label :category_id,"公開" %></div>
+      <div class="col-4 align-top"><%= f.radio_button :is_active, :true, checked: true %><%= f.label :is_active_true,"ON" %></div>
+      <div class="col-4 align-top"><%= f.radio_button :is_active, :false %><%= f.label :is_active_false, "OFF" %></div>
+  
+      <%= f.hidden_field :price %>
+  
+      <div class="col-12 text-center mt-4 mx-auto"><%= f.submit "新規登録", class: "btn btn-sm btn-outline-success text-center rounded-pill border border-3" %></div>
+    </div>
+  <% end %>
 </div>
 <div class="col-xl-8">
   <div class="d-flex flex-wrap">
